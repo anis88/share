@@ -1,0 +1,9 @@
+---
+Name: baseroutes
+After: framework/routes#adminroutes
+---
+Director:
+  rules:
+    'share/$Action!/$ID!': 'Share_Controller'
+    'view/$Action!/$ID!': Share_Controller
+    '': Share_Controller
