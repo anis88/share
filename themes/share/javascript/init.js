@@ -15,10 +15,10 @@ window.addEvent('domready', function  () {
 				e.stop();
 			},
 			'mouseenter': function () {
-				console.log(el.get('href'));
+				// TODO show tooltip and reuest data from href
 			},
 			'mouseleave': function () {
-				console.log('hide');
+				// TODO hide tooltip
 			}
 		});
 	});

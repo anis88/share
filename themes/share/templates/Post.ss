@@ -4,6 +4,8 @@
 		
 		<div class="columns twelve">
 			<h1>$Post.Title</h1>
+			
+			<p>gepostet von <a href="/posts/user/$Post.Member.FirstName">$Post.Member.FirstName</a></p>
 		
 			$Post.Content
 		

@@ -4,6 +4,8 @@ After: framework/routes#adminroutes
 ---
 Director:
   rules:
+    'posts/$Action!/$ID!': 'Share_Controller'
+    'profile/$Action!': 'Profile_Controller'
     'share/$Action!/$ID!': 'Share_Controller'
     'view/$Action!/$ID!': Share_Controller
     '': Share_Controller

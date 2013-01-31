@@ -23,6 +23,7 @@
 					<ul class="dropdown">
 						<li>
 							<a href="/admin">admin</a>
+							<a href="/profile/edit">edit profile</a>
 							<a href="/Security/logout?BackURL=/">logout</a>
 						</li>
 					</ul>

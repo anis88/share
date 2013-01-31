@@ -11,7 +11,7 @@ class Share_Controller extends Controller {
 	);
 	
 	public static $url_handlers = array(
-        //'share/search/$SearchTerm' => 'search'
+        //'posts/user/$ID' => 'user'
     );
 	
 	public function init() {
@@ -25,6 +25,7 @@ class Share_Controller extends Controller {
 		
 		// include css
 		Requirements::css($css_folder . 'foundation/stylesheets/foundation.min.css');
+		Requirements::css($css_folder . 'ToolTip.css');
 		// TODO pass target folder
 		Requirements::css($css_folder . 'app.less', 'screen', BASE_PATH);
 		
@@ -33,6 +34,7 @@ class Share_Controller extends Controller {
 		
 		$js_array = array(
 			$js_folder . 'mootools-core-1.4.5-full-nocompat-yc.js',
+			$js_folder . 'ToolTip.js',
 			$js_folder . 'init.js'
 		);
 		foreach ($js_array as $js) {
@@ -122,5 +124,5 @@ class Share_Controller extends Controller {
 			'UserName' => $username
 		)); 
 	}
-
+	
 }

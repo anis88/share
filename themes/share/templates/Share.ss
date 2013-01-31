@@ -1,5 +1,5 @@
 <% include Header %>
-$Posts.Count
+	
 	<% if SearchTerm || UserName %>
 		<section class="row">
 			<div class="columns twelve">
@@ -21,7 +21,7 @@ $Posts.Count
 						<div class="margin">
 							<h2><a href="view/post/$ID">$Title</a></h2>
 							<p class="date">$Created.Format(d/m/y)</p>
-							<p class="author"><a href="/share/user/$Member.FirstName">$Member.FirstName</a></p>
+							<p class="author"><a href="/posts/user/$Member.FirstName">$Member.FirstName</a></p>
 						</div>
 					</div>
 				</article>
