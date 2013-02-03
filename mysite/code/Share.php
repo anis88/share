@@ -7,6 +7,7 @@ class Share_Controller extends Controller {
 		'likes',
 		'post',
 		'search',
+		'unlike',
 		'user'
 	);
 	
@@ -19,7 +20,7 @@ class Share_Controller extends Controller {
 		
 		$theme_folder = 'themes/' . SSViewer::current_theme();
 		$css_folder = $theme_folder . '/css/';
-		$combined_folder = $css_folder . '/_combinedfiles';
+		$combined_folder = $theme_folder . '/_combinedfiles';
 		
 		Requirements::set_combined_files_folder($combined_folder);
 		
@@ -55,12 +56,12 @@ class Share_Controller extends Controller {
 		$params = $this->getURLParams();
 		$id = (int)$params['ID'];
 		
-		$like = Like::get()->filter(array(
+		$like_count = Like::get()->filter(array(
 			'PostID' => $id,
 			'MemberID' => Member::currentUserID()
-		));
+		))->Count();
 		
-		if($like->Count() == 0) {
+		if ($like_count == 0) {
 			$like = new Like();
 			$like->PostID = $id;
 			$like->MemberID = Member::currentUserID();
@@ -72,7 +73,7 @@ class Share_Controller extends Controller {
 		$params = $this->getURLParams();
 		$id = (int)$params['ID'];
 		
-		// TODO map firstname
+		// TODO map firstname & exclude current member
 		$member = Member::get()->leftJoin('Like', 'Like.MemberID = Member.ID')->filter(array(
 			'PostID' => $id
 		))->sort('Member.FirstName', 'ASC');
@@ -105,6 +106,20 @@ class Share_Controller extends Controller {
 			'Posts' => $posts,
 			'SearchTerm' => $search_term
 		)); 
+	}
+	
+	public function unlike() {
+		$params = $this->getURLParams();
+		$id = (int)$params['ID'];
+		
+		$like = Like::get()->filter(array(
+			'PostID' => $id,
+			'MemberID' => Member::currentUserID()
+		))->First();
+		
+		if ($like) {
+			$like->delete();
+		}
 	}
 	
 	public function user() {

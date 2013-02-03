@@ -28,8 +28,19 @@
 								<ul class="dropdown hidden">
 									<li>
 										<a href="/admin" class="new-window">admin</a>
-										<!--<a href="/profile/edit">edit profile</a>
-										<a href="/about">about share</a>-->
+									</li>
+									<!--
+									<li>
+										<a href="/user/likes">likes</a>
+									</li>
+									<li>
+											<a href="/user/edit">edit profile</a>
+									</li>
+									<li>
+										<a href="/page/get/about">about share</a>
+									</li>
+									-->
+									<li>
 										<a href="/Security/logout?BackURL=/">logout</a>
 									</li>
 								</ul>

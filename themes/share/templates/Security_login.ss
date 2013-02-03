@@ -2,12 +2,10 @@
 <html lang="$ContentLocale">
 <head>
     <% base_tag %>
-    <title><% if MetaTitle %>$MetaTitle<% else %>$Title<% end_if %> - $SiteConfig.Title</title>
-    $MetaTags(false)
+    <title>share :: sign in</title>
 	<% require themedCSS(foundation/stylesheets/foundation.min) %>
 	<% require themedCSS(app) %>
-	<% require themedCSS(form) %>
-    <% require themedCSS(login) %>
+	<meta name="viewport" content="width=device-width">
 </head>
 <body class="$ClassName LoginPage typography">
     

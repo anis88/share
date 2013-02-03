@@ -69,11 +69,6 @@ class Post extends DataObject {
 		);
 	}
 	
-	public function getLikes() {
-		return $this->Likes()->Count();
-		//return Like::get()->filter('PostID', $this->ID);
-	}
-	
 	public function getYouTubeID() {
 		$link = $this->YouTubeLink;
 		// link with ?|&v=ID
@@ -86,7 +81,15 @@ class Post extends DataObject {
 			preg_match('/.*youtu.be\/([A-Za-z0-9]*)/', $link, $match);
 			return $match[1];
 		}
+		
 		return false;
+	}
+	
+	public function hasLiked() {
+		return Like::get()->filter(array(
+			'MemberID' => Member::currentUserID(),
+			'PostID' => $this->ID
+		))->First();
 	}
 	
 	public function onBeforeWrite() {	

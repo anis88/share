@@ -6,7 +6,7 @@
 			
 			<h1>$Post.Title</h1>
 			
-			<p>gepostet am $Created.Format(d/m/y) von <a href="/posts/user/$Post.Member.FirstName">$Post.Member.FirstName</a></p>
+			<p>gepostet am $Post.Created.Format(d/m/y) von <a href="/posts/user/$Post.Member.FirstName">$Post.Member.FirstName</a></p>
 		
 			$Post.Content
 		
@@ -15,22 +15,24 @@
 			<% end_if %>
 		
 			<% if Post.File %>
-				<!--
+				<!-- check for mp3 support
 				<audio controls autobuffer>
 					<source src="$Post.File.Link">
 				</audio>
 				-->
-				<a href="/download/file/$Post.File.ID" class="button download">Lied runterladen</a>
+				<a href="/download/file/$Post.File.ID" class="button download">Download</a>
 			<% end_if %>
-			
-			<!--
-			<section>
-				<% if Post.Likes %>
-					<p><a href="/share/likes/$Post.ID" class="show-tooltip"><span class="like-count">$Post.Likes.Count</span> <% if $Post.Likes.Count = "1" %>Person<% else %>Leuten<% end_if %></a> gefaellt das</p>
+
+			<!--<% if Post.Likes %>
+				<p><a href="/share/likes/$Post.ID" class="show-tooltip"><span class="like-count">$Post.Likes.Count</span> <% if $Post.Likes.Count = "1" %>Person<% else %>Leuten<% end_if %></a> gefaellt das</p>
+			<% end_if %>-->
+			<% if CurrentMember %>
+				<% if Post.hasLiked %>
+					<a href="/post/unlike/$Post.ID" class="button like">Unlike</a>
+				<% else %>
+					<a href="/post/like/$Post.ID" class="button like">Like</a>
 				<% end_if %>
-				<a href="/share/like/$Post.ID" class="button like star">Like</a>
-			</section>
-			-->
+			<% end_if %>
 			
 		</section>
 	</section>

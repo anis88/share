@@ -12,6 +12,16 @@
 		</section>
 	<% end_if %>
 	
+	<section class="mobile-only row sign-in-mobile">
+		<section class="columns twelve">
+			<% if CurrentMember %>
+				<a href="/Security/logout?BackURL=/">sign out</a>
+			<% else %>
+				<a href="/Security/login?BackURL=/">sign in</a>
+			<% end_if %>
+		</section>
+	</section>
+	
 	<section id="Posts" class="row">
 
 		<% if Posts %>
