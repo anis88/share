@@ -1,11 +1,12 @@
 <% include Header %>
 
-	<div class="post row">
+	<section class="post row">
 		
-		<div class="columns twelve">
+		<section class="columns twelve">
+			
 			<h1>$Post.Title</h1>
 			
-			<p>gepostet von <a href="/posts/user/$Post.Member.FirstName">$Post.Member.FirstName</a></p>
+			<p>gepostet am $Created.Format(d/m/y) von <a href="/posts/user/$Post.Member.FirstName">$Post.Member.FirstName</a></p>
 		
 			$Post.Content
 		
@@ -14,19 +15,24 @@
 			<% end_if %>
 		
 			<% if Post.File %>
+				<!--
 				<audio controls autobuffer>
 					<source src="$Post.File.Link">
 				</audio>
-				<a href="$Post.File.Link">Lied runterladen</a>
+				-->
+				<a href="/download/file/$Post.File.ID" class="button download">Lied runterladen</a>
 			<% end_if %>
 			
+			<!--
 			<section>
 				<% if Post.Likes %>
-					<p><a href="/share/likes/$Post.ID" class="show-tooltip">$Post.Likes.Count <% if $Post.Likes.Count = "1" %>Person<% else %>Leuten<% end_if %></a> gefaellt das</p>
+					<p><a href="/share/likes/$Post.ID" class="show-tooltip"><span class="like-count">$Post.Likes.Count</span> <% if $Post.Likes.Count = "1" %>Person<% else %>Leuten<% end_if %></a> gefaellt das</p>
 				<% end_if %>
-				<a href="/share/like/$Post.ID" class="button star">Like</a>
-			</section>	
-		</div>
-	</div>
+				<a href="/share/like/$Post.ID" class="button like star">Like</a>
+			</section>
+			-->
+			
+		</section>
+	</section>
 	
 <% include Footer %>

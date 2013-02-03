@@ -1,8 +1,14 @@
 body {
   background-color: #524C49;
 }
-h1 a {
-  font-size: 36px;
+.button {
+  border: 0;
+  box-shadow: none;
+}
+ul.hidden {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
 }
 .margin {
   padding: 10px;
@@ -15,18 +21,17 @@ h1,
 h2,
 h3,
 p,
-a {
+a,
+label {
   font-family: Raleway;
 }
 h1 {
+  color: #fff;
   font-size: 36px;
   font-weight: normal;
-  height: 40px;
-  line-height: 40px;
-  margin: 0;
 }
-section h1 {
-  color: #fff;
+h1 a {
+  font-size: 36px;
 }
 h2 {
   font-size: 24px;
@@ -34,7 +39,10 @@ h2 {
 }
 p,
 a {
-  font-size: 16px;
+  font-size: 17px;
+}
+a:active {
+  color: #fff;
 }
 header *,
 article * {
@@ -73,7 +81,18 @@ header form {
 input[type=search] {
   border-radius: 10px;
 }
+form label {
+  color: #fff;
+  cursor: default;
+}
+input[type=submit] {
+  margin-bottom: 10px;
+}
+#Remember {
+  display: none;
+}
 header {
+  background-color: #56bbd2;
   margin: 0 0 20px;
 }
 header .row {
@@ -81,7 +100,19 @@ header .row {
 }
 header h1 {
   background: url(../images/icons/heart-white.png) 0 50% no-repeat;
+  height: 40px;
+  line-height: 40px;
+  margin: 0;
   padding: 0 0 0 40px;
+}
+.menue {
+  float: right;
+  height: 24px;
+  line-height: 24px;
+  margin: 8px 0 0;
+}
+.menue a {
+  text-align: right;
 }
 a.notifications {
   background: url(../images/icons/notifications-white.png) 50% 50% no-repeat;
@@ -99,32 +130,36 @@ a.notifications {
 .notifications.unread {
   background-image: url(../images/icons/notifications-orange.png);
 }
-.user-menue {
-  color: #fff;
-  display: block;
-  height: 24px;
-  line-height: 24px;
-  margin: 8px 0 0;
-  padding: 0 6px 0 0;
-}
-.user-menue:after {
-  content: '';
-}
 .dropdown {
-  display: none;
+  background-color: #56bbd2;
+  left: 0;
   list-style: none;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
 }
-.sign-in {
+.dropdown li a {
+  border-bottom: 1px solid #7ecbdd;
   display: block;
-  height: 24px;
-  line-height: 24px;
-  margin: 8px 0 0;
+  padding: 2px 10px;
+}
+.dropdown li a:last-of-type {
+  border: 0;
+}
+#Posts:hover article:not(:hover) {
+  opacity: 0.4;
 }
 section h1 {
   margin: 0 0 20px;
 }
 article {
   margin: 0 0 20px;
+  opacity: 1;
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
 }
 article div.content {
   height: 120px;
@@ -132,7 +167,7 @@ article div.content {
 }
 article h2 a {
   display: block;
-  font-size: 22px;
+  font-size: 24px;
   height: 55px;
 }
 article h2 a:hover {
@@ -154,28 +189,53 @@ a.load-more {
   margin: 0 0 20px;
   text-align: center;
 }
+.post {
+  margin-bottom: 20px;
+}
 .post h1,
 .post p {
   color: #fff;
 }
-.star {
-  background-image: url(../images/icons/star.png);
-  background-position: 4px 50%;
-  background-repeat: no-repeat;
-}
-audio {
+.post iframe {
   display: block;
   margin: 0 0 20px;
+  max-width: 100%;
 }
 @media only screen and (max-width: 767px) {
-  header .row {
-    height: 80px;
+  header h1 {
+    background: none;
+    padding: 4px 0 0;
+  }
+  header h1 a {
+    display: block;
+    font-size: 44px;
+    text-align: center;
   }
   header .search-form {
     display: none;
   }
-  header div.column {
-    float: left;
-    width: 40% !important;
+  header div.column.three {
+    display: none;
+  }
+  header div.column.three .menue a {
+    font-size: 24px;
+  }
+  article div.content {
+    height: auto;
+    min-height: 1px;
+  }
+  article div.content h2 {
+    margin: 0;
+  }
+  article div.content h2 a {
+    height: auto;
+  }
+  article div.content p {
+    margin: 0 0 5px;
+  }
+  input[type="submit"] {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
   }
 }

@@ -2,7 +2,7 @@
 
 class Color extends DataObject {
 
-	public static $default_sort = 'Title DESC';
+	public static $default_sort = 'Title ASC';
 
     static $db = array(
 		'Hex' => 'Varchar(6)',

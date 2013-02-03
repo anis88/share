@@ -63,8 +63,8 @@ class Post extends DataObject {
 	public function getCMSFields() {
 		return new FieldList(
 			new TextField('Title'),
-			new HTMLEditorField('Content'),
-			new UploadField('File'),
+			new HTMLEditorField('Content', 'Text'),
+			new UploadField('File', 'File (max. 8MB)'),
 			new TextField('YouTubeLink')
 		);
 	}
@@ -78,7 +78,7 @@ class Post extends DataObject {
 		$link = $this->YouTubeLink;
 		// link with ?|&v=ID
 		if (strrpos($link, 'v=')) {
-			preg_match('/.*v=([A-Za-z0-9]*)/', $link, $match);
+			preg_match('/.*v=([^&]*)/', $link, $match);
 			return $match[1];
 		}
 		// embed link http://youtu.be/ID

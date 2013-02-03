@@ -11,7 +11,18 @@
 :: Mobile Styles
 */
 
+/* Colors */
 @body-color: #524C49;
+@header-color: #56bbd2;
+@header-light: lighten(@header-color, 10%);
+@font-color: #fff;
+/* Font Sizes */
+@extra-large-text: 44px;
+@large-text: 36px;
+@medium-text: 24px;
+@regular-text: 17px;
+/* Spacing */
+@spacing-default: 10px;
 
 /* -----------------------------------------
    Shared Styles
@@ -21,12 +32,19 @@ body {
     background-color: @body-color;
 }
 
-h1 a {
-	font-size: 36px;
+.button {
+	border: 0;
+	box-shadow: none;
+}
+
+ul.hidden {
+	height: 0;
+	opacity: 0;
+	overflow: hidden;
 }
 
 .margin {
-    padding: 10px;
+    padding: @spacing-default;
 }
 
 /* -----------------------------------------
@@ -42,34 +60,37 @@ h1,
 h2,
 h3,
 p,
-a {
+a,
+label {
     font-family: Raleway;
 }
 
 h1 {
-    font-size: 36px;
+	color: @font-color;
+    font-size: @large-text;
     font-weight: normal;
-    height: 40px;
-    line-height: 40px;
-    margin: 0;
+	a {
+		font-size: @large-text;
 	}
-    section h1 {
-        color: #fff;
-    }
+}
 
 h2 {
-    font-size: 24px;
+    font-size: @medium-text;
     margin: 0 0 20px;
 }
 
 p,
 a {
-    font-size: 16px;
+    font-size: @regular-text;
+}
+
+a:active {
+	color: @font-color;
 }
 
 header *,
 article * {
-    color: #fff;
+    color: @font-color;
 }
 
 /* -----------------------------------------
@@ -111,25 +132,54 @@ article * {
 header form {
     margin: 4px 0 0;
 }
+
 input[type=search] {
     border-radius: 10px;
 }
+
+form label {
+	color: @font-color;
+	cursor: default;
+}
+
+input[type=submit] {
+    margin-bottom: @spacing-default;
+}
+
+#Remember {
+	display: none;
+}
+
 
 /* -----------------------------------------
    Header
 ----------------------------------------- */
 
 header {
+	background-color: @header-color;
     margin: 0 0 20px;
     .row {
         height: 40px;
 	}
 	h1 {
 	    background: url(../images/icons/heart-white.png) 0 50% no-repeat;
+		height: 40px;
+		line-height: 40px;
+		margin: 0;
 	    padding: 0 0 0 40px;
 	}
 }
-    
+
+.menue {
+	float: right;
+    height: 24px;
+    line-height: 24px;
+    margin: 8px 0 0;
+	a {
+		text-align: right;
+	}
+}    
+
 a.notifications {
     background: url(../images/icons/notifications-white.png) 50% 50% no-repeat;
     color: #fff;
@@ -148,32 +198,40 @@ a.notifications {
     }
 
 .user-menue {
-    color: #fff;
-    display: block;
-    height: 24px;
-    line-height: 24px;
-    margin: 8px 0 0;
-    padding: 0 6px 0 0;
-    &:after {
-        content: '';
-    }
-}
-	
-.dropdown {
-	display: none;
-	list-style: none;
 }
 
-.sign-in {
-	display: block;
-	height: 24px;
-    line-height: 24px;
-    margin: 8px 0 0;
+.notification-count {
+	
+}
+
+.dropdown {
+	background-color: @header-color;
+	left: 0;
+	list-style: none;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	z-index: 1;
+	li {
+		
+		a {
+			border-bottom: 1px solid @header-light;
+			display: block;
+			padding: 2px 10px;
+			&:last-of-type {
+				border: 0;
+			}
+		}
+	}
 }
 
 /* -----------------------------------------
    Tiles
 ----------------------------------------- */
+
+#Posts:hover article:not(:hover) {
+	opacity: 0.4;
+}
 
 section h1 {
     margin: 0 0 20px;
@@ -181,21 +239,24 @@ section h1 {
 
 article  {
     margin: 0 0 20px;
+	opacity: 1;
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
     div.content  {
         height: 120px;
         overflow: hidden;
 	}
 }
 
-article h2 {
-	a {
-		display: block;
-		font-size: 22px;
-		height: 55px;
-		&:hover {
-			color: #fff;
-			text-decoration: underline;
-		}
+article h2 a {
+	display: block;
+	font-size: @medium-text;
+	height: 55px;
+	&:hover {
+		color: @font-color;
+		text-decoration: underline;
 	}
 }
 
@@ -208,7 +269,6 @@ p.date {
 p.author {
     text-align: right;
 }
-    
 
 /* -----------------------------------------
    Pagination
@@ -227,21 +287,16 @@ a.load-more {
 ----------------------------------------- */
 
 .post {
+	margin-bottom: 20px;
 	h1,
 	p {
-		color: #fff;
+		color: @font-color;
 	}
-}
-
-.star {
-	background-image: url(../images/icons/star.png);
-	background-position: 4px 50%;
-	background-repeat: no-repeat;
-}
-
-audio {
-	display: block;
-	margin: 0 0 20px;
+	iframe {
+		display: block;
+		margin: 0 0 20px;
+		max-width: 100%;
+	}
 }
 
 /* -----------------------------------------
@@ -249,14 +304,44 @@ audio {
 ----------------------------------------- */
 
 @media only screen and (max-width: 767px) {
-    header .row {
-        height: 80px;
-    }
-    header .search-form {
-        display: none;
-    }
-    header div.column {
-        float: left;
-        width: 40% !important;
-    }
+	header {
+		h1 {
+			background: none;
+			padding: 4px 0 0;
+			a {
+				display: block;
+				font-size: @extra-large-text;
+				text-align: center;
+			}
+		}
+		.search-form {
+			display: none;
+		}
+		div.column.three {
+			display: none;
+			.menue a {
+				font-size: @medium-text;
+			}
+		}
+	}
+	article {
+		div.content {
+			height: auto;
+			min-height: 1px;
+			h2 {
+				margin: 0;
+				a {
+					height: auto;
+				}
+			}
+			p {
+				margin: 0 0 5px;
+			}
+		}
+	}
+	input[type="submit"] {
+		padding-left: 0;
+		padding-right: 0;
+		width: 100%;
+	}
 }

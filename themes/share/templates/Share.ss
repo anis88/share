@@ -12,7 +12,7 @@
 		</section>
 	<% end_if %>
 	
-	<section class="row">
+	<section id="Posts" class="row">
 
 		<% if Posts %>
 			<% loop Posts %>
