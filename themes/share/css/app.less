@@ -9,24 +9,28 @@
 :: Sign In Mobile
 :: Tiles
 :: Pagination
+:: Footer
 :: Mobile Styles
 */
 
 /* Colors */
 @body-color: #524C49;
 @header-color: #56bbd2;
+@header-dark: darken(@header-color, 10%);
 @header-light: lighten(@header-color, 10%);
 @font-color: #fff;
+
 /* Font Sizes */
 @extra-large-text: 44px;
 @large-text: 36px;
 @medium-text: 24px;
 @regular-text: 17px;
+
 /* Spacing */
 @spacing-default: 10px;
 @spacing-larger: 20px;
 
-.transition (@property: all, @duration: .25s) {
+.transition (@property: all, @duration: .5s) {
 	-webkit-transition: @property @duration ease;
 	-moz-transition: @property @duration ease;
 	-o-transition: @property @duration ease;
@@ -47,7 +51,7 @@ body {
 	box-shadow: none;
 }
 
-ul.hidden {
+.hidden {
 	height: 0;
 	opacity: 0;
 	overflow: hidden;
@@ -107,7 +111,7 @@ a:focus {
 }
 
 /* -----------------------------------------
-   Colors
+   Colors / names from colourlovers.com
 ----------------------------------------- */
 
 .anthropomorphic {
@@ -125,6 +129,9 @@ a:focus {
 .metropolis {
     background-color: #E0B204;
 }
+.no {
+	background-color: #083F4D;
+}
 .phenomenon {
     background-color: #C7C897;
 }
@@ -137,6 +144,9 @@ a:focus {
 .valley-pass {
     background-color: #9DAB78;
 }
+.wool-white {
+	background-color: #E8E8E8;
+}
 
 /* -----------------------------------------
    Forms
@@ -147,7 +157,7 @@ header form {
 }
 
 input[type=search] {
-    border-radius: 10px;
+    border-radius: 4px;
 }
 
 form label {
@@ -170,6 +180,7 @@ input[type=submit] {
 
 header {
 	background-color: @header-color;
+	height: 40px;
     margin: 0 0 20px;
     .row {
         height: 40px;
@@ -213,8 +224,7 @@ a.notifications {
 .user-menue {
 }
 
-.notification-count {
-	
+.notification-count {	
 }
 
 .dropdown {
@@ -222,7 +232,7 @@ a.notifications {
 	left: 0;
 	list-style: none;
 	position: absolute;
-	top: 5px;
+	top: 0;
 	width: 100%;
 	z-index: 1;
 	li {
@@ -336,15 +346,32 @@ a.load-more {
 ----------------------------------------- */
 
 @media only screen and (max-width: 767px) {
+	
+	.hide-on-mobile {
+		display: none;
+	}	
+	.mobile-only {
+		display: block;
+	}
+	
 	header {
-		height:auto;
-		.row {
+		height: 50px;
+		margin: 0 0 @spacing-default;
+		.row:first-of-type {
 			height: 50px;
+		}
+		.row:last-of-type {
+			height: auto;
+		}
+		.three {
+			padding: 0;
 		}
 		h1 {
 			background: none;
-			line-height: 50px;
-			padding: 0;
+			height: 45px;
+			line-height: 45px;
+			padding: 5px 0 0;
+			margin: 0 0 5px;
 		}
 		h1,
 		h1 a {
@@ -352,18 +379,18 @@ a.load-more {
 			font-size: @extra-large-text;
 			text-align: center;
 		}
-		.search-form {
-			display: none;
-		}
-		div.column.three {
-			display: none;
-			.menue a {
-				font-size: @medium-text;
-			}
+		&.header-open-mobile {
+			height: auto;
 		}
 	}
 	
+	section h1 {
+		font-size: @medium-text;
+		margin-bottom: @spacing-default;
+	}
+	
 	article {
+		margin-bottom: @spacing-default;
 		div.content {
 			height: auto;
 			min-height: 1px;
@@ -379,7 +406,29 @@ a.load-more {
 		}
 	}
 	
-	.mobile-only {
-		display: block;
+	.mobile-menue {
+		background: @header-dark;
+		height: 50px;
+		line-height: 50px;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		top: 0;
+		width: 80px;
+		z-index: 1;
+		a:hover {
+			color: @header-light;
+		}
 	}
+
+	.dropdown {
+		background: @header-dark;
+		position: static;
+		margin: 0;
+		a {
+			text-align: center;
+		}
+	}	
+	
+	
 }

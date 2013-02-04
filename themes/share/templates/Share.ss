@@ -11,17 +11,7 @@
 			</div>
 		</section>
 	<% end_if %>
-	
-	<section class="mobile-only row sign-in-mobile">
-		<section class="columns twelve">
-			<% if CurrentMember %>
-				<a href="/Security/logout?BackURL=/">sign out</a>
-			<% else %>
-				<a href="/Security/login?BackURL=/">sign in</a>
-			<% end_if %>
-		</section>
-	</section>
-	
+		
 	<section id="Posts" class="row">
 
 		<% if Posts %>
@@ -31,7 +21,9 @@
 						<div class="margin">
 							<h2><a href="view/post/$ID">$Title</a></h2>
 							<p class="date">$Created.Format(d/m/y)</p>
-							<p class="author"><a href="/posts/user/$Member.FirstName">$Member.FirstName</a></p>
+							<p class="author">
+								<a href="/posts/user/$Member.FirstName" class="posts von $Member.FirstName">$Member.FirstName</a>
+							</p>
 						</div>
 					</div>
 				</article>
@@ -42,10 +34,11 @@
 	    
 	</section>
 	
-	<!--<section class="row">
-	    <div class="columns twelve">
-            <a href="#" class="load-more silk">mehr laden</a>
-	    </div>
-    </section>-->
+	<section class="row">
+	    <section class="columns twelve">
+            <a href="#" class="load-more wool-white">mehr posts</a>
+	    </section>
+    </section>
 
-<% include Footer %>
+</body>
+</html>

@@ -2,9 +2,12 @@
 
 class Share_Controller extends Controller {
 
+	private $per_page;
+
 	public static $allowed_actions = array (
 		'like',
 		'likes',
+		'page',
 		'post',
 		'search',
 		'unlike',
@@ -17,6 +20,8 @@ class Share_Controller extends Controller {
 	
 	public function init() {
 		parent::init();
+		
+		$this->per_page = 3;
 		
 		$theme_folder = 'themes/' . SSViewer::current_theme();
 		$css_folder = $theme_folder . '/css/';
@@ -44,7 +49,7 @@ class Share_Controller extends Controller {
 		Requirements::combine_files('scripts.js', $js_array);
 	}
 	
-	public function index() {
+	public function index() {	
 		$posts = Post::get()->sort('Created', 'DESC');
 		
 		return $this->renderWith('Share', array(
@@ -81,6 +86,27 @@ class Share_Controller extends Controller {
 		return $this->renderWith('Ajax', array(
 			'Member' => $member
 		)); 
+	}
+	
+	public function page() {
+		$params = $this->getURLParams();
+		$page = (int)$params['ID'];
+		
+		if ($page > 0) {
+			$start = ($page - 1) * $this->per_page;
+			
+			$posts = Post::get()->sort('Created', 'DESC')->limit($this->per_page, $start);
+			
+			if ($posts->Count() > 0) {
+				return $this->renderWith('Share', array(
+					'Posts' => $posts
+				));	
+			} else {
+				$this->redirect('/');
+			}
+		} else {
+			$this->redirect('/');
+		}
 	}
 	
 	public function post() {

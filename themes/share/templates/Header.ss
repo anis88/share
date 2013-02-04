@@ -8,48 +8,59 @@
 <body>
 	
 	<header>
+		
 	    <div class="row">
 	        <div class="column four">
 	            <h1><a href="/">share</a></h1>
 	        </div>
-	        <div class="column four search-form">
+	        <div class="column four hide-on-mobile search-form">
 	            <form action="{$BaseURL}share/search/">
 	                <input type="search" class="twelve" placeholder="search"<% if SearchTerm %> value="$SearchTerm"<% end_if %>>
                 </form>
 	        </div>
-	        <div class="column three offset-by-one">
+	        <div class="column hide-on-mobile three offset-by-one">
 				<div class="menue">
 					<% if CurrentMember %>
 						<!--<a href="#" class="notifications unread">3</a>-->
 						<a href="#" class="user-menue">$CurrentMember.FirstName</a>
 						<a href="#" class="notification-count" title="Hier kommen die Benachrichtungen">(3)</a>
-						<div class="row">
-							<div class="columns twelve">
-								<ul class="dropdown hidden">
-									<li>
-										<a href="/admin" class="new-window">admin</a>
-									</li>
-									<!--
-									<li>
-										<a href="/user/likes">likes</a>
-									</li>
-									<li>
-											<a href="/user/edit">edit profile</a>
-									</li>
-									<li>
-										<a href="/page/get/about">about share</a>
-									</li>
-									-->
-									<li>
-										<a href="/Security/logout?BackURL=/">logout</a>
-									</li>
-								</ul>
-							</div>
-						</div>
 					<% else %>
 						<a href="/Security/login?BackURL=/" class="sign-in">sign in</a>
 					<% end_if %>
 				</div>
 	        </div>
+			
+			<!-- menue for mobile view -->
+			<a href="#" class="mobile-menue mobile-only">menue</a>
+			
 	    </div>
+		
+		<div class="hidden row">
+			<div class="columns offset-by-nine three">
+				<ul class="dropdown">
+					<li class="hide-on-mobile">
+						<a href="/admin" class="new-window">admin</a>
+					</li>
+					<% if CurrentMember %>
+					<li>
+						<a href="/user/likes">likes</a>
+					</li>
+					<li>
+						<a href="/user/edit">edit profile</a>
+					</li>
+					<% end_if %>
+					<li>
+						<a href="/page/get/about">about share</a>
+					</li>
+					<li>
+						<% if CurrentMember %>
+							<a href="/Security/logout?BackURL=/">sign out</a>
+						<% else %>
+							<a href="/Security/login?BackURL=/" class="sign-in">sign in</a>
+						<% end_if %>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
 	</header>

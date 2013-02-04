@@ -12,7 +12,7 @@
 	<header>
 		<div class="row">
 	        <div class="column twelve">
-				<h1>Login</h1>
+				<h1>login</h1>
 			</div>
 		</div>
 	</header>
@@ -31,9 +31,6 @@
         </div>
     </div>
 
-	<script>
-		document.getElementById('MemberLoginForm_LoginForm_Email').focus();
-	</script>
 	<script src="/themes/share/javascript/mootools-core-1.4.5-full-nocompat-yc.js"></script>
 	<script src="/themes/share/javascript/init.js"></script>
 	

@@ -26,15 +26,15 @@
 			<!--<% if Post.Likes %>
 				<p><a href="/share/likes/$Post.ID" class="show-tooltip"><span class="like-count">$Post.Likes.Count</span> <% if $Post.Likes.Count = "1" %>Person<% else %>Leuten<% end_if %></a> gefaellt das</p>
 			<% end_if %>-->
-			<% if CurrentMember %>
-				<% if Post.hasLiked %>
-					<a href="/post/unlike/$Post.ID" class="button like">Unlike</a>
-				<% else %>
-					<a href="/post/like/$Post.ID" class="button like">Like</a>
-				<% end_if %>
+			<% if Post.hasLiked %>
+				<a href="/post/unlike/$Post.ID" class="button like xhr">Unlike</a>
+			<% else %>
+				<a href="<% if CurrentMember %>/post/like/$Post.ID<% else %>/Security/login?BackURL=/view/post/$Post.ID<% end_if %>" class="button like<% if CurrentMember %> xhr<% end_if %>">Like</a>				
 			<% end_if %>
 			
 		</section>
 	</section>
 	
-<% include Footer %>
+
+</body>
+</html>

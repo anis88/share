@@ -5,7 +5,7 @@ body {
   border: 0;
   box-shadow: none;
 }
-ul.hidden {
+.hidden {
   height: 0;
   opacity: 0;
   overflow: hidden;
@@ -66,6 +66,9 @@ a:focus {
 .metropolis {
   background-color: #E0B204;
 }
+.no {
+  background-color: #083F4D;
+}
 .phenomenon {
   background-color: #C7C897;
 }
@@ -78,11 +81,14 @@ a:focus {
 .valley-pass {
   background-color: #9DAB78;
 }
+.wool-white {
+  background-color: #E8E8E8;
+}
 header form {
   margin: 4px 0 0;
 }
 input[type=search] {
-  border-radius: 10px;
+  border-radius: 4px;
 }
 form label {
   color: #fff;
@@ -96,6 +102,7 @@ input[type=submit] {
 }
 header {
   background-color: #56bbd2;
+  height: 40px;
   margin: 0 0 20px;
 }
 header .row {
@@ -138,16 +145,16 @@ a.notifications {
   left: 0;
   list-style: none;
   position: absolute;
-  top: 5px;
+  top: 0;
   width: 100%;
   z-index: 1;
 }
 .dropdown li {
   border-bottom: 1px solid #7ecbdd;
-  -webkit-transition: all .25s ease;
-  -moz-transition: all .25s ease;
-  -o-transition: all .25s ease;
-  transition: all .25s ease;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
 }
 .dropdown li:hover {
   background: #7ecbdd;
@@ -177,10 +184,10 @@ section h1 {
 article {
   margin: 0 0 20px;
   opacity: 1;
-  -webkit-transition: all .25s ease;
-  -moz-transition: all .25s ease;
-  -o-transition: all .25s ease;
-  transition: all .25s ease;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
 }
 article div.content {
   height: 120px;
@@ -226,15 +233,31 @@ a.load-more {
   margin-bottom: 10px;
 }
 @media only screen and (max-width: 767px) {
+  .hide-on-mobile {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
+  }
   header {
+    height: 50px;
+    margin: 0 0 10px;
+  }
+  header .row:first-of-type {
+    height: 50px;
+  }
+  header .row:last-of-type {
     height: auto;
   }
-  header .row {
-    height: 50px;
+  header .three {
+    padding: 0;
   }
   header h1 {
     background: none;
-    line-height: 50px;
+    height: 45px;
+    line-height: 45px;
+    padding: 5px 0 0;
+    margin: 0 0 5px;
   }
   header h1,
   header h1 a {
@@ -242,14 +265,15 @@ a.load-more {
     font-size: 44px;
     text-align: center;
   }
-  header .search-form {
-    display: none;
+  header.header-open-mobile {
+    height: auto;
   }
-  header div.column.three {
-    display: none;
-  }
-  header div.column.three .menue a {
+  section h1 {
     font-size: 24px;
+    margin-bottom: 10px;
+  }
+  article {
+    margin-bottom: 10px;
   }
   article div.content {
     height: auto;
@@ -264,7 +288,26 @@ a.load-more {
   article div.content p {
     margin: 0 0 5px;
   }
-  .mobile-only {
-    display: block;
+  .mobile-menue {
+    background: #34a7c1;
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 80px;
+    z-index: 1;
+  }
+  .mobile-menue a:hover {
+    color: #7ecbdd;
+  }
+  .dropdown {
+    background: #34a7c1;
+    position: static;
+    margin: 0;
+  }
+  .dropdown a {
+    text-align: center;
   }
 }
