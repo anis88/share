@@ -45,14 +45,15 @@ class User_Controller extends Share_controller {
 	}
 	
 	public function likes() {
-		/*
-		$posts = Post::get()->leftJoin('Like', 'Like.MemberID = ' . Member::currentUserID() . ' AND Like.PostID = Post.ID')->filter('Like.MemberID:GreaterThan', 0)->sort('Created', 'DESC');
-		Debug::dump($posts->Count());
+		$posts = Post::get()
+		         ->leftJoin('Like', 'Like.MemberID = ' . Member::currentUserID() . ' AND Like.PostID = Post.ID')
+		         ->where('Like.MemberID > 0')
+		         ->sort('Post.Created', 'DESC');
+		
 		return $this->renderWith('Share', array(
+			'LikesPage' => true,
 			'Posts' => $posts
 		));
-		*/
-		return array();
 	}
 
 }

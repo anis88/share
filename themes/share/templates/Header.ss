@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>share</title>
 	<meta name="viewport" content="width=device-width">
+	<meta name="robots" content="noindex, nofollow">
 </head>
 <body>
 	
@@ -45,9 +46,11 @@
 					<li>
 						<a href="/user/likes">likes</a>
 					</li>
+					<!--
 					<li>
 						<a href="/user/edit">edit profile</a>
 					</li>
+					-->
 					<% end_if %>
 					<li>
 						<a href="/page/get/about">about share</a>

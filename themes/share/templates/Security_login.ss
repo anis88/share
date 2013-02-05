@@ -6,6 +6,7 @@
 	<% require themedCSS(foundation/stylesheets/foundation.min) %>
 	<% require themedCSS(app) %>
 	<meta name="viewport" content="width=device-width">
+	<meta name="robots" content="noindex, nofollow">
 </head>
 <body class="$ClassName LoginPage typography">
     

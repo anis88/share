@@ -64,7 +64,8 @@ class Post extends DataObject {
 		return new FieldList(
 			new TextField('Title'),
 			new HTMLEditorField('Content', 'Text'),
-			new UploadField('File', 'File (max. 8MB)'),
+			// adjust the max upload size to your server settings
+			new UploadField('File', 'File (max. 16MB)'),
 			new TextField('YouTubeLink')
 		);
 	}

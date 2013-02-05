@@ -1,12 +1,14 @@
 <% include Header %>
 	
-	<% if SearchTerm || UserName %>
+	<% if LikesPage || SearchTerm || UserName %>
 		<section class="row">
 			<div class="columns twelve">
 				<% if UserName %>
 					<h1>alle shares von $UserName</h1>
 				<% else_if SearchTerm %>
 					<h1>$Posts.Count Titel zum Begriff $SearchTerm</h1>
+				<% else_if LikesPage %>
+					<h1>Deine Likes</h1>
 				<% end_if %>
 			</div>
 		</section>
@@ -34,11 +36,13 @@
 	    
 	</section>
 	
-	<section class="row">
-	    <section class="columns twelve">
-            <a href="#" class="load-more wool-white">mehr posts</a>
-	    </section>
-    </section>
+	<% if NextPage %>
+		<section class="row">
+			<section class="columns twelve">
+				<a href="#" class="load-more wool-white">mehr posts</a>
+			</section>
+		</section>
+	<% end_if %>
 
 </body>
 </html>

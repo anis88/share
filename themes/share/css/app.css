@@ -90,9 +90,24 @@ header form {
 input[type=search] {
   border-radius: 4px;
 }
+::-webkit-input-placeholder {
+  color: #aaa;
+}
+::-moz-placeholder {
+  color: #aaa;
+}
+:-ms-input-placeholder {
+  color: #aaa;
+}
+input:-moz-placeholder {
+  color: #aaa;
+}
 form label {
   color: #fff;
   cursor: default;
+}
+form label.left {
+  float: none;
 }
 input[type=submit] {
   margin-bottom: 10px;
@@ -240,7 +255,7 @@ a.load-more {
     display: block;
   }
   header {
-    height: 50px;
+    height: 45px;
     margin: 0 0 10px;
   }
   header .row:first-of-type {
@@ -256,8 +271,7 @@ a.load-more {
     background: none;
     height: 45px;
     line-height: 45px;
-    padding: 5px 0 0;
-    margin: 0 0 5px;
+    padding: 3px 0 0;
   }
   header h1,
   header h1 a {
@@ -290,13 +304,13 @@ a.load-more {
   }
   .mobile-menue {
     background: #34a7c1;
-    height: 50px;
-    line-height: 50px;
+    height: 45px;
+    line-height: 45px;
     position: absolute;
     right: 0;
     text-align: center;
     top: 0;
-    width: 80px;
+    width: 65px;
     z-index: 1;
   }
   .mobile-menue a:hover {
