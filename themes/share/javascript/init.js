@@ -45,6 +45,14 @@ window.addEvent('domready', function  () {
 		});
 	});
 	
+	// links in post content
+	$$('.post-content a').each(function (el) {
+		el.addEvent('click', function (e) {
+			e.stop();
+			window.open(el.get('href'));
+		});
+	});
+	
 	// Tooltips
 	$$('a.show-tooltip').each(function (el) {
 		el.addEvents({

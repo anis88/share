@@ -4,7 +4,8 @@ class User_Controller extends Share_controller {
 
 	public static $allowed_actions = array (
 		'edit',
-		'likes'
+		'likes',
+		'notifications'
 	);
 	
 	public function init() {

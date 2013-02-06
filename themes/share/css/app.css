@@ -255,7 +255,7 @@ a.load-more {
     display: block;
   }
   header {
-    height: 45px;
+    height: 50px;
     margin: 0 0 10px;
   }
   header .row:first-of-type {
@@ -271,7 +271,7 @@ a.load-more {
     background: none;
     height: 45px;
     line-height: 45px;
-    padding: 3px 0 0;
+    padding: 5px 0 0;
   }
   header h1,
   header h1 a {
@@ -304,8 +304,8 @@ a.load-more {
   }
   .mobile-menue {
     background: #34a7c1;
-    height: 45px;
-    line-height: 45px;
+    height: 50px;
+    line-height: 50px;
     position: absolute;
     right: 0;
     text-align: center;

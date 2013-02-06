@@ -31,35 +31,30 @@ class Post extends DataObject {
 	public function canDelete($member = NULL){ 
 		if (Permission::check('ADMIN')) {
 			return true;
-		} else {
-			if ($this->MemberID == Member::currentUserID()) { 
-			    return true;    
-			}
-			return false;
-		} 
+		} else if ($this->MemberID == Member::currentUserID()) { 
+			 return true;    
+		}
+		return false;
 	}
 	
 	public function canEdit($member = NULL){ 
 		if (Permission::check('ADMIN')) {
 			return true;
-		} else {
-			if ($this->MemberID == Member::currentUserID()) { 
-			    return true;    
-			}
-			return false;
+		} else if ($this->MemberID == Member::currentUserID()) { 
+			 return true;    
 		}
+		return false;
 	}
 	
 	public function canView($member = null) {
 		if (Permission::check('ADMIN')) {
 			return true;
-		} else {
-			if ($this->MemberID == Member::currentUserID())	{
-				return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
-			}
-			return false;
+		} else if ($this->MemberID == Member::currentUserID())	{
+			return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
 		}
+		return false;
     }
+	
 	public function getCMSFields() {
 		return new FieldList(
 			new TextField('Title'),
@@ -68,6 +63,15 @@ class Post extends DataObject {
 			new UploadField('File', 'File (max. 16MB)'),
 			new TextField('YouTubeLink')
 		);
+	}
+	
+	public function getLikes() {
+		$likes = Member::get()
+		         ->leftJoin('Like', 'Like.MemberID = Member.ID')
+		         ->where('Like.PostID = ' . $this->ID)
+		         ->exclude('ID', Member::currentUserID());
+		
+		return $likes;
 	}
 	
 	public function getYouTubeID() {

@@ -1,0 +1,25 @@
+en:
+  ColorAdmin:
+    MENUTITLE: Colors
+  PageContentAdmin:
+    MENUTITLE: 'Page Content'
+  ShareAdmin:
+    MENUTITLE: Share
+  Color:
+    PLURALNAME: Colors
+    SINGULARNAME: Color
+  Like:
+    PLURALNAME: Liks
+    SINGULARNAME: Like
+  MyMember:
+    PLURALNAME: 'My Members'
+    SINGULARNAME: 'My Member'
+  Notification:
+    PLURALNAME: Notifications
+    SINGULARNAME: Notification
+  PageContent:
+    PLURALNAME: 'Page Contents'
+    SINGULARNAME: 'Page Content'
+  Post:
+    PLURALNAME: Posts
+    SINGULARNAME: Post
