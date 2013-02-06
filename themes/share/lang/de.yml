@@ -4,3 +4,6 @@ de:
     LikeThis: 'gefaellt das'
     LikeThisSingular: 'gefaellt das'
     You: Dir
+  Menu:
+    SignIn: 'anmelden'
+    SignOut: 'abmelden'

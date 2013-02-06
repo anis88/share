@@ -1,26 +1,23 @@
 <?php
 
-class Color extends DataObject {
+class Genre extends DataObject {
 
 	public static $default_sort = 'Title ASC';
 
     static $db = array(
-		'Hex' => 'Varchar(6)',
 		'Title' => 'Varchar(100)'
     );
 	
 	static $summary_fields = array(
-        'Title',
-		'Hex'
+        'Title'
     );
 	
-	public function canCreate($member = NULL){
-		// kinda useless because default ??
+	public function canCreate($member = NULL){ 
 		return Permission::check('ADMIN');
 	}
 	
 	public function canDelete($member = NULL){ 
-		return Permission::check('ADMIN');
+		return Permission::check('ADMIN'); 
 	}
 	
 	public function canEdit($member = NULL){ 
@@ -30,5 +27,5 @@ class Color extends DataObject {
 	public function canView($member = null) {
         return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
     }
-
+	
 }

@@ -3,10 +3,12 @@
 class ShareAdmin extends ModelAdmin {
     
     public static $managed_models = array(
-        'Post'
+        'Color',
+		'Genre',
+		'PageContent'
     );
  
-    static $url_segment = 'share'; 
-    static $menu_title = 'Share';
+    static $url_segment = 'shareadmin'; 
+    static $menu_title = 'Admin';
  
 }

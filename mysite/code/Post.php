@@ -6,12 +6,14 @@ class Post extends DataObject {
 
     static $db = array(
 		'Content' => 'HTMLText',
+		//'Genre' => "Enum('Alternative,Blues,Classical,Country,Dance,Easy Listening,Electronic,Hip Hop / Rap,Indie,Jazz,Pop,R&B / Soul,Reggae,Rock,Singer / Songwriter,World Music')",
 		'Title' => 'Varchar(100)',
 		'YouTubeLink' => 'Varchar(100)'
     );
 	
 	static $has_one = array(
 		'File' => 'File',
+		'Genre' => 'Genre',
 		'Member' => 'MyMember'
 	);
 	
@@ -21,6 +23,7 @@ class Post extends DataObject {
 	
 	static $summary_fields = array(
         'Title',
+		'Genre.Title',
 		'Member.FirstName'
     );
 	
@@ -56,9 +59,12 @@ class Post extends DataObject {
     }
 	
 	public function getCMSFields() {
+		$dropdown_values = Genre::get()->map('ID', 'Title');
+		
 		return new FieldList(
 			new TextField('Title'),
 			new HTMLEditorField('Content', 'Text'),
+			new DropdownField('GenreID', 'Genre', $dropdown_values, 0, null, '-- select genre --'),
 			// adjust the max upload size to your server settings
 			new UploadField('File', 'File (max. 16MB)'),
 			new TextField('YouTubeLink')

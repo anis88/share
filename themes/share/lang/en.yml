@@ -4,3 +4,6 @@ en:
     LikeThis: 'like this'
     LikeThisSingular: 'likes this'
     You: You
+  Menu:
+    SignIn: 'sign in'
+    SignOut: 'sign out'

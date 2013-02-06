@@ -6,7 +6,7 @@
 			
 			<h1>$Post.Title</h1>
 			
-			<p>gepostet am $Post.Created.Format(d/m/y) von <a href="/posts/user/$Post.Member.FirstName">$Post.Member.FirstName</a></p>
+			<p><% if Post.Genre.Title %>$Post.Genre.Title &ndash; <% end_if %>gepostet am $Post.Created.Format(d/m/y) von <a href="/posts/user/$Post.Member.FirstName">$Post.Member.FirstName</a></p>
 		
 			<section class="post-content">
 				$Post.Content

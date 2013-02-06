@@ -24,15 +24,17 @@
 					<% if CurrentMember %>
 						<!--<a href="#" class="notifications unread">3</a>-->
 						<a href="#" class="user-menue">$CurrentMember.FirstName</a>
+						<!--
 						<a href="#" class="notification-count" title="Hier kommen die Benachrichtungen">(3)</a>
+						-->
 					<% else %>
-						<a href="/Security/login?BackURL=/" class="sign-in">sign in</a>
+						<a href="/Security/login?BackURL=/" class="sign-in"><%t Menu.SignIn "sign in" %></a>
 					<% end_if %>
 				</div>
 	        </div>
 			
 			<!-- menue for mobile view -->
-			<a href="#" class="mobile-menue mobile-only">menue</a>
+			<a href="#" class="mobile-menue mobile-only">menu</a>
 			
 	    </div>
 		
@@ -57,9 +59,9 @@
 					</li>
 					<li>
 						<% if CurrentMember %>
-							<a href="/Security/logout?BackURL=/">sign out</a>
+							<a href="/Security/logout?BackURL=/"><%t Menu.SignOut "sign out" %></a>
 						<% else %>
-							<a href="/Security/login?BackURL=/" class="sign-in">sign in</a>
+							<a href="/Security/login?BackURL=/" class="sign-in"><%t Menu.SignIn "sign in" %></a>
 						<% end_if %>
 					</li>
 				</ul>
