@@ -17,8 +17,12 @@ body {
   display: none;
 }
 @font-face {
-  font-family: Raleway;
-  src: url('../webfonts/raleway_thin-webfont.woff');
+  font-family: "Ubuntu Light";
+  src: url('../webfonts/Ubuntu-L.woff');
+}
+@font-face {
+  font-family: "Ubuntu Light Italic";
+  src: url('../webfonts/Ubuntu-LI.woff');
 }
 h1,
 h2,
@@ -26,7 +30,11 @@ h3,
 p,
 a,
 label {
-  font-family: Raleway;
+  font-family: "Ubuntu Light";
+  font-weight: normal;
+}
+em {
+  font-family: "Ubuntu Light Italic";
 }
 h1 {
   color: #fff;
@@ -126,7 +134,7 @@ header .row {
 header h1 {
   background: url(../images/icons/heart-white.png) 0 50% no-repeat;
   height: 40px;
-  line-height: 40px;
+  line-height: 35px;
   margin: 0;
   padding: 0 0 0 40px;
 }
@@ -301,6 +309,9 @@ a.load-more {
   }
   article div.content p {
     margin: 0 0 5px;
+  }
+  #Posts:hover article:not(:hover) {
+    opacity: 1;
   }
   .mobile-menue {
     background: #34a7c1;

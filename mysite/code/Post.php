@@ -89,7 +89,7 @@ class Post extends DataObject {
 		}
 		// embed link http://youtu.be/ID
 		if (strrpos($link, 'youtu.be')) {
-			preg_match('/.*youtu.be\/([A-Za-z0-9]*)/', $link, $match);
+			preg_match('/.*youtu.be\/([^?]*)/', $link, $match);
 			return $match[1];
 		}
 		
