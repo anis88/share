@@ -5,6 +5,7 @@
 	<title>share</title>
 	<meta name="viewport" content="width=device-width">
 	<meta name="robots" content="noindex, nofollow">
+	<link rel="icon" type="image/png" href="/themes/share/images/share-logo.png">
 </head>
 <body>
 	
