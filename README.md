@@ -10,14 +10,30 @@ See [doc.silverstripe.org](http://doc.silverstripe.org/framework/en/installation
 
 ## TODOs and upcoming features ##
 
+### version 0.2 ###
+
  * installation guide
  * pagination
- * notifications
- * frontend profile page
+ * page titles
+ * notifications (likes)
  * filter by genre
  * embed soundcloud links
- * frontend page
- * change locale onn demand
+ * change locale on demand or get it from member settings
+ 
+### planned ###
+ 
+ * group member name if post has many likes
+ * post from frontend
+ * frontend profile page
+ * RSS feed, maybe...
+ * get posts via ajax
+ * periodical check for new posts, with notification in title
+
+## Changelog ##
+
+### Version 0.1 ###
+
+First release
 
 ## Links ##
 
