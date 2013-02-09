@@ -10,9 +10,14 @@ See [doc.silverstripe.org](http://doc.silverstripe.org/framework/en/installation
 
 ## TODOs and upcoming features ##
 
+ * installation guide
+ * pagination
  * notifications
  * frontend profile page
  * filter by genre
+ * embed soundcloud links
+ * frontend page
+ * change locale onn demand
 
 ## Links ##
 
