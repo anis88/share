@@ -55,7 +55,7 @@
 					-->
 					<% end_if %>
 					<li>
-						<a href="/page/get/about">about share</a>
+						<a href="/page/get/about"><%t Menu.About "about share" %></a>
 					</li>
 					<li>
 						<% if CurrentMember %>

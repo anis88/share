@@ -262,6 +262,10 @@ a.load-more {
   .mobile-only {
     display: block;
   }
+  p,
+  a {
+    font-size: 14px;
+  }
   header {
     height: 50px;
     margin: 0 0 10px;
@@ -279,7 +283,7 @@ a.load-more {
     background: none;
     height: 45px;
     line-height: 45px;
-    padding: 5px 0 0;
+    padding: 2px 0 0;
   }
   header h1,
   header h1 a {
@@ -291,7 +295,7 @@ a.load-more {
     height: auto;
   }
   section h1 {
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 10px;
   }
   article {
@@ -302,9 +306,10 @@ a.load-more {
     min-height: 1px;
   }
   article div.content h2 {
-    margin: 0;
+    margin: 0 0 10px;
   }
   article div.content h2 a {
+    font-size: 22px;
     height: auto;
   }
   article div.content p {

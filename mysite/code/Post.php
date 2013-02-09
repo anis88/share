@@ -6,7 +6,6 @@ class Post extends DataObject {
 
     static $db = array(
 		'Content' => 'HTMLText',
-		//'Genre' => "Enum('Alternative,Blues,Classical,Country,Dance,Easy Listening,Electronic,Hip Hop / Rap,Indie,Jazz,Pop,R&B / Soul,Reggae,Rock,Singer / Songwriter,World Music')",
 		'Title' => 'Varchar(100)',
 		'YouTubeLink' => 'Varchar(100)'
     );
@@ -32,27 +31,21 @@ class Post extends DataObject {
 	}
 	
 	public function canDelete($member = NULL){ 
-		if (Permission::check('ADMIN')) {
-			return true;
-		} else if ($this->MemberID == Member::currentUserID()) { 
-			 return true;    
+		if (Permission::check('ADMIN') || $this->MemberID == Member::currentUserID()) { 
+			return true;    
 		}
 		return false;
 	}
 	
 	public function canEdit($member = NULL){ 
-		if (Permission::check('ADMIN')) {
-			return true;
-		} else if ($this->MemberID == Member::currentUserID()) { 
-			 return true;    
+		if (Permission::check('ADMIN') || $this->MemberID == Member::currentUserID()) { 
+			return true;    
 		}
 		return false;
 	}
 	
 	public function canView($member = null) {
-		if (Permission::check('ADMIN')) {
-			return true;
-		} else if ($this->MemberID == Member::currentUserID())	{
+		if (Permission::check('ADMIN') || $this->MemberID == Member::currentUserID())	{
 			return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
 		}
 		return false;

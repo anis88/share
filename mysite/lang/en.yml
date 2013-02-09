@@ -1,13 +1,14 @@
 en:
-  ColorAdmin:
-    MENUTITLE: Colors
-  PageContentAdmin:
-    MENUTITLE: 'Page Content'
-  ShareAdmin:
+  PostAdmin:
     MENUTITLE: Share
+  ShareAdmin:
+    MENUTITLE: Admin
   Color:
     PLURALNAME: Colors
     SINGULARNAME: Color
+  Genre:
+    PLURALNAME: Genrs
+    SINGULARNAME: Genre
   Like:
     PLURALNAME: Liks
     SINGULARNAME: Like

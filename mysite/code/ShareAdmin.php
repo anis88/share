@@ -9,6 +9,6 @@ class ShareAdmin extends ModelAdmin {
     );
  
     static $url_segment = 'shareadmin'; 
-    static $menu_title = 'Admin';
+    static $menu_title = 'Share Admin';
  
 }

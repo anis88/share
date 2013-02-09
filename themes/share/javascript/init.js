@@ -75,13 +75,36 @@ window.addEvent('domready', function  () {
 			e.stop();
 			
 			if (holder.hasClass('hidden')) {
-				$$('header')[0].addClass('header-open-mobile');
-				holder.removeClass('hidden');
+				userMenue.show();
 			} else {
-				$$('header')[0].removeClass('header-open-mobile');
-				holder.addClass('hidden');
+				userMenue.hide();
 			}
 		});
 	});
 	
 });
+
+var userMenue = {
+
+	holder: $$('.dropdown')[0].getParent('.row'),
+	
+	hide: function () {
+		$$('header')[0].removeClass('header-open-mobile');
+		this.holder.addClass('hidden');
+	},
+	
+	show: function () {
+		if ( ! this.holder.hasClass('hidden')) {
+			return;
+		}
+		
+		$$('header')[0].addClass('header-open-mobile');
+		this.holder.removeClass('hidden');
+		
+		document.body.addEvent('click', function () {
+			userMenue.hide();
+			document.body.removeEvents('click');
+		});
+	}
+	
+};

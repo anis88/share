@@ -24,7 +24,9 @@
 @extra-large-text: 44px;
 @large-text: 36px;
 @medium-text: 24px;
+@medium-text-mobile: 22px;
 @regular-text: 17px;
+@regular-text-mobile: 14px;
 
 /* Spacing */
 @spacing-default: 10px;
@@ -371,6 +373,11 @@ a.load-more {
 		display: block;
 	}
 	
+	p,
+	a {
+		font-size: @regular-text-mobile;
+	}
+	
 	header {
 		height: 50px;
 		margin: 0 0 @spacing-default;
@@ -401,7 +408,7 @@ a.load-more {
 	}
 	
 	section h1 {
-		font-size: @medium-text;
+		font-size: @medium-text-mobile;
 		margin-bottom: @spacing-default;
 	}
 	
@@ -411,8 +418,9 @@ a.load-more {
 			height: auto;
 			min-height: 1px;
 			h2 {
-				margin: 0;
+				margin: 0 0 10px;
 				a {
+					font-size: @medium-text-mobile;
 					height: auto;
 				}
 			}
@@ -421,6 +429,7 @@ a.load-more {
 			}
 		}
 	}
+	
 	#Posts:hover article:not(:hover) {
 		opacity: 1;
 	}
@@ -448,6 +457,5 @@ a.load-more {
 			text-align: center;
 		}
 	}	
-	
-	
+		
 }
