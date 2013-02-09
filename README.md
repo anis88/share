@@ -8,6 +8,12 @@ See [doc.silverstripe.org](http://doc.silverstripe.org/framework/en/installation
 
 ...
 
+## TODOs and upcoming features ##
+
+ * notifications
+ * frontend profile page
+ * filter by genre
+
 ## Links ##
 
  * [Docs Sapphire Framework](http://doc.silverstripe.org/framework)
