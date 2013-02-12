@@ -37,23 +37,23 @@ First release
 
 ## How to add a post ##
 
-* Click on "anmelden" in the top right corner
+_Step 1_ Click on "anmelden" in the top right corner
 
 ![share home screen](http://share.johannes-fischer.de/assets/Images/01-home.png "Home screen")
 
-* Enter your email address and password
+_Step 2_ Enter your email address and password
 
 ![login screen](http://share.johannes-fischer.de/assets/Images/02-login.png "Login screen")
 
-* You will be redirected to the home screen again. Now click on your username and select admin in the dropdown menu
+_Step 3_ You will be redirected to the home screen again. Now click on your username and select admin in the dropdown menu
 
 ![dropdown menu](http://share.johannes-fischer.de/assets/Images/03-admin.png "select admin in the dropdown menu")
 
-* Select "add post" in the backend. All your previous posts will be listed here, you can edit or delete them by clicking on the icons next to them.
+_Step 4_ Select "add post" in the backend. All your previous posts will be listed here, you can edit or delete them by clicking on the icons next to them.
 
 ![post admin](http://share.johannes-fischer.de/assets/Images/04-add-post.png "select add post to create a new post")
 
-* Full out the form and click on save when you're done. Please enter at least a title and a link or attach a file from your computer (please note that you won't be able to attach a file before you saved the post once). A description and genre aren't needed, but it makes share a better expereince, so please fill these fields out as well!
+_Step 5_ Fill out the form and click on save when you're done. Please enter at least a title and a link or attach a file from your computer (please note that you won't be able to attach a file before you saved the post once). A description and genre aren't needed, but it makes share a better expereince, so please fill these fields out as well!
 
 ![create post](http://share.johannes-fischer.de/assets/Images/05-new-post.png "Fill out the form and click on save when you're done")
 
