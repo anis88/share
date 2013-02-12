@@ -1,10 +1,16 @@
 en:
   Content:
     And: and
+    By: by
     LikeThis: 'like this'
     LikeThisSingular: 'likes this'
+    PostedOn: 'posted on'
     You: You
   Menu:
     About: 'about share'
     SignIn: 'sign in'
     SignOut: 'sign out'
+  Title:
+    results: '{resultcount} results for {searchterm}'
+    usershares: 'All shares from  {username}'
+    your: Your

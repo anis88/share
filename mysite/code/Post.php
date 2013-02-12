@@ -7,7 +7,8 @@ class Post extends DataObject {
     static $db = array(
 		'Content' => 'HTMLText',
 		'Title' => 'Varchar(100)',
-		'YouTubeLink' => 'Varchar(100)'
+		'Link' => 'Varchar(100)',
+		'YouTubeID' => 'Varchar(20)'
     );
 	
 	static $has_one = array(
@@ -60,7 +61,7 @@ class Post extends DataObject {
 			new DropdownField('GenreID', 'Genre', $dropdown_values, 0, null, '-- select genre --'),
 			// adjust the max upload size to your server settings
 			new UploadField('File', 'File (max. 16MB)'),
-			new TextField('YouTubeLink')
+			new TextField('Link', 'Youtube or Soundcloud Link')
 		);
 	}
 	
@@ -74,15 +75,14 @@ class Post extends DataObject {
 	}
 	
 	public function getYouTubeID() {
-		$link = $this->YouTubeLink;
 		// link with ?|&v=ID
-		if (strrpos($link, 'v=')) {
-			preg_match('/.*v=([^&]*)/', $link, $match);
+		if (strrpos($this->Link, 'v=')) {
+			preg_match('/.*v=([^&]*)/', $this->Link, $match);
 			return $match[1];
 		}
 		// embed link http://youtu.be/ID
-		if (strrpos($link, 'youtu.be')) {
-			preg_match('/.*youtu.be\/([^?]*)/', $link, $match);
+		if (strrpos($this->Link, 'youtu.be')) {
+			preg_match('/.*youtu.be\/([^?]*)/', $this->Link, $match);
 			return $match[1];
 		}
 		
@@ -96,22 +96,33 @@ class Post extends DataObject {
 		))->First();
 	}
 	
+	public function hasSoundcloudLink() {
+		return strrpos($this->Link, 'soundcloud.com');
+	}
+	
+	// useless helper...Post.YouTubeID is true in the template even if NULL
+	public function hasYouTubeID() {
+		return $this->YouTubeID;
+	}
+	
 	public function onBeforeWrite() {	
 		if ( ! $this->MemberID) {
 			$this->MemberID = Member::currentUserID();
+		}
+		// stores extracted youtube id if available
+		if ($this->getYouTubeID()) {
+			$this->YouTubeID = $this->getYouTubeID();
 		}
 		
 		parent::onBeforeWrite();
 	}
 	
+	/*
 	public function validate() {
         $result = parent::validate();
 		
-		//if($this->Title == '') {
-		//	$result->error('Bitte einen Titel angeben');
-		//}
-		
         return $result;
     }
+	*/
 
 }

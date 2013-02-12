@@ -47,7 +47,7 @@
 					</li>
 					<% if CurrentMember %>
 					<li>
-						<a href="/user/likes">likes</a>
+						<a href="/user/likes"><%t Title.your "your" %> likes</a>
 					</li>
 					<!--
 					<li>

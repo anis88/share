@@ -22,7 +22,7 @@ See [doc.silverstripe.org](http://doc.silverstripe.org/framework/en/installation
  
 ### planned ###
  
- * group member name if post has many likes
+ * group member names if a post has many likes (>5)
  * post from frontend
  * frontend profile page
  * RSS feed, maybe...

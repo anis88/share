@@ -22,3 +22,7 @@ SSViewer::set_theme('share');
 i18n::set_locale('en_US');
 
 Object::useCustomClass('Member', 'MyMember');
+
+// set your soundcloud client ID to enable the embeded soundcloud widget
+// more information can be found on: http://developers.soundcloud.com/docs
+// define('SOUNDCLOUD_CLIENT_ID', '');

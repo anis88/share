@@ -6,14 +6,22 @@
 			
 			<h1>$Post.Title</h1>
 			
-			<p><% if Post.Genre.Title %>$Post.Genre.Title &ndash; <% end_if %>gepostet am $Post.Created.Format(d/m/y) von <a href="/posts/user/$Post.Member.FirstName">$Post.Member.FirstName</a></p>
+			<p><% if Post.Genre.Title %>$Post.Genre.Title &ndash; <% end_if %><%t Content.PostedOn "posted on" %> $Post.Created.Format(d/m/y) <%t Content.By "by" %> <a href="/posts/user/$Post.Member.FirstName">$Post.Member.FirstName</a></p>
 		
 			<section class="post-content">
 				$Post.Content
 			</section>
 		
-			<% if Post.YouTubeLink %>
-				<iframe width="560" height="315" src="http://www.youtube.com/embed/$Post.getYouTubeID" frameborder="0" allowfullscreen></iframe>
+			<% if Post.hasYouTubeID %>
+				<iframe width="560" height="315" src="http://www.youtube.com/embed/$Post.YouTubeID" frameborder="0" allowfullscreen></iframe>
+			<% end_if %>
+			
+			<% if $SoundcloudClientID && Post.hasSoundcloudLink %>
+				<div id="SoundcloudPlayer"></div>
+				<script src="http://connect.soundcloud.com/sdk.js"></script>
+				<script>					
+					embedSoundcloud('$SoundcloudClientID', '$Post.Link');
+				</script>
 			<% end_if %>
 			
 			<% if Post.Likes %>
@@ -26,7 +34,11 @@
 						$FirstName
 					<% end_loop %>
 					<% if Post.Likes.Count = 1 %>
-						<%t Content.LikeThisSingular "likes this" %>
+						<% if Post.hasLiked %>
+							<%t Content.LikeThis "like this" %>
+						<% else %>
+							<%t Content.LikeThisSingular "likes this" %>
+						<% end_if %>
 					<% else %>
 						<%t Content.LikeThis "like this" %>
 					<% end_if %>

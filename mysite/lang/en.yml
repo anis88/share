@@ -2,7 +2,7 @@ en:
   PostAdmin:
     MENUTITLE: Share
   ShareAdmin:
-    MENUTITLE: Admin
+    MENUTITLE: 'Share Admin'
   Color:
     PLURALNAME: Colors
     SINGULARNAME: Color

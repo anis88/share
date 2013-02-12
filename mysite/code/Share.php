@@ -41,12 +41,20 @@ class Share_Controller extends Controller {
 		$js_array = array(
 			$js_folder . 'mootools-core-1.4.5-full-nocompat-yc.js',
 			$js_folder . 'ToolTip.js',
-			$js_folder . 'init.js'
+			$js_folder . 'init.js',
+			$js_folder . 'soundcloud.js'
 		);
 		foreach ($js_array as $js) {
 			Requirements::javascript($js);
 		}
 		Requirements::combine_files('scripts.js', $js_array);
+		
+		// set locale
+		if ($member = Member::CurrentUser()) {
+			if ($member->Locale != i18n::get_locale()) {
+				i18n::set_locale($member->Locale);
+			}
+		}		
 	}
 	
 	public function index() {	
@@ -115,9 +123,14 @@ class Share_Controller extends Controller {
 		
 		$post = Post::get()->filter('ID', $id)->First();
 		
-		return $this->renderWith('Post', array(
-			'Post' => $post
-		)); 
+		if ( ! $post) {
+			$this->redirect('/');
+		} else {		
+			return $this->renderWith('Post', array(
+				'Post' => $post,
+				'SoundcloudClientID' => defined('SOUNDCLOUD_CLIENT_ID') ? SOUNDCLOUD_CLIENT_ID : false
+			));
+		}
 	}
 	
 	public function search() {

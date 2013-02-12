@@ -1,10 +1,16 @@
 de:
   Content:
     And: und
+    By: von
     LikeThis: 'gefällt das'
     LikeThisSingular: 'gefällt das'
+    PostedOn: 'gepostet am'
     You: Dir
   Menu:
     About: 'über share'
     SignIn: 'anmelden'
     SignOut: 'abmelden'
+  Title:
+    results: '{resultcount} Treffer für {searchterm}'
+    usershares: 'Alle shares von  {username}'
+    your: Deine
