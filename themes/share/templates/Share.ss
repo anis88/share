@@ -36,13 +36,18 @@
 	    
 	</section>
 	
-	<% if NextPage %>
-		<section class="row">
-			<section class="columns twelve">
-				<a href="#" class="load-more wool-white">mehr posts</a>
-			</section>
+	<section class="pagination row">
+		<section class="columns twelve">
+			<% if Posts.MoreThanOnePage %>
+				<% if Posts.NotFirstPage %>
+					<a class="button" href="$Posts.PrevLink">Prev</a>
+				<% end_if %>
+				<% if Posts.NotLastPage %>
+					<a class="button" href="$Posts.NextLink">Next</a>
+				<% end_if %>
+			<% end_if %>
 		</section>
-	<% end_if %>
+	</section>
 
 </body>
 </html>

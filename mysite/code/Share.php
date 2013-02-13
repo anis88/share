@@ -60,8 +60,11 @@ class Share_Controller extends Controller {
 	public function index() {	
 		$posts = Post::get()->sort('Created', 'DESC');
 		
+		$list = new PaginatedList($posts, $this->request);
+		$list->setPageLength(12);
+		
 		return $this->renderWith('Share', array(
-			'Posts' => $posts
+			'Posts' => $list
 		));
 	}
 	
@@ -168,7 +171,7 @@ class Share_Controller extends Controller {
 		$member = Member::get()->filter('FirstName', $username)->First();
 		
 		if ($member) {
-			$posts = Post::get()->filter('MemberID', $member->ID)->sort('Created');
+			$posts = Post::get()->filter('MemberID', $member->ID)->sort('Created', 'DESC');
 		} else {
 			$posts = false;
 		}

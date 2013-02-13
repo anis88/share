@@ -45,6 +45,12 @@
 				</p>
 			<% end_if %>
 			
+			<% if Post.hasLiked %>
+				<a href="/post/unlike/$Post.ID" class="button like xhr">Unlike</a>
+			<% else %>
+				<a href="<% if CurrentMember %>/post/like/$Post.ID<% else %>/Security/login?BackURL=/view/post/$Post.ID<% end_if %>" class="button like<% if CurrentMember %> xhr<% end_if %>">Like</a>				
+			<% end_if %>
+			
 			<% if Post.File %>
 				<!-- check for mp3 support
 				<audio controls autobuffer>
@@ -54,15 +60,8 @@
 				<a href="/download/file/$Post.File.ID" class="button download">Download</a>
 			<% end_if %>
 			
-			<% if Post.hasLiked %>
-				<a href="/post/unlike/$Post.ID" class="button like xhr">Unlike</a>
-			<% else %>
-				<a href="<% if CurrentMember %>/post/like/$Post.ID<% else %>/Security/login?BackURL=/view/post/$Post.ID<% end_if %>" class="button like<% if CurrentMember %> xhr<% end_if %>">Like</a>				
-			<% end_if %>
-			
 		</section>
 	</section>
 	
-
 </body>
 </html>
