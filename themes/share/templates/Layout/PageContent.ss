@@ -1,5 +1,3 @@
-<% include Header %>
-
 <section class="row">
 	
 	<section class="columns twelve">
@@ -11,5 +9,3 @@
 	</section>
 	
 </section>
-	
-<% include Footer %>

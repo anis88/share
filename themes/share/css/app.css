@@ -242,24 +242,22 @@ p.date {
 p.author {
   text-align: right;
 }
-a.load-more {
-  display: block;
-  height: 30px;
-  line-height: 30px;
-  margin: 0 0 20px;
-  text-align: center;
+.pagination {
+  margin-bottom: 10px;
 }
 .post {
   margin-bottom: 20px;
 }
 .post h1,
-.post p {
+.post p,
+.post em {
   color: #fff;
 }
 .post iframe {
   display: block;
   margin: 0 0 20px;
   max-width: 100%;
+  min-height: 166px;
 }
 .post .button {
   margin-bottom: 10px;

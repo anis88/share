@@ -33,7 +33,7 @@ class User_Controller extends Share_controller {
         // Create action
         $validator = new RequiredFields('FirstName', 'Email');
         
-       //Create form
+		//Create form
         $Form = new Form($this, 'save', $fields, $actions, $validator);
 		
         //Populate the form with the current members data
@@ -51,7 +51,7 @@ class User_Controller extends Share_controller {
 		         ->where('Like.MemberID > 0')
 		         ->sort('Post.Created', 'DESC');
 		
-		return $this->renderWith('Share', array(
+		return $this->renderWith(array('Page', 'Share'), array(
 			'LikesPage' => true,
 			'Posts' => $posts
 		));

@@ -1,95 +1,113 @@
-window.addEvent('domready', function  () {
+$(document).ready(function  () {
 
-	var searchForm = $$('.search-form form')[0];
+	var searchForm = jQuery('.search-form form');
 	
 	if (searchForm) {
-		searchForm.addEvent('submit', function (e) {
-			e.stop();
-			window.location.href = searchForm.get('action') + searchForm.getElement('input').get('value');
+		searchForm.submit(function () {
+			var value = jQuery('input[type=search]',this).val();
+			if (value !== '') {
+				window.location.href = searchForm.attr('action') + value;
+			}
+			return false;
 		});
 	}
 	
-	if ($$('form input[type=submit]')[0]) {
-		$$('form input')[0].focus();
-		$$('form input[type=submit]')[0].addClass('button');
+	if (jQuery('form input[type=submit]')) {
+		jQuery('form input[type=submit]').addClass('button');
 	}
 	
-	$$('a.new-window').each(function (el) {
-		el.addEvent('click', function (e) {
-			e.stop();
-			window.open(el.get('href'));
+	// target blank
+	jQuery('a.new-window').each(function () {
+		$(this).click(function () {
+			window.open($(this).attr('href'));
+			return false;
 		});
 	});
 	
 	// like / unlike
-	$$('a.xhr').each(function (el) {
-		el.addEvent('click', function (e) {
-			e.stop();
-			if (el.hasClass('disabled'))  return;
+	jQuery('a.xhr').each(function () {
+		$(this).click(function () {
+			var a = $(this);
+			if ($(this).hasClass('disabled')) return false;
 			
-			el.addClass('disabled');
+			$(this).addClass('disabled');
 			
-			new Request({
-				onSuccess: function () {
-					if (el.hasClass('like')) {
-						if (el.get('text') == 'Like') {
-							el.set('text', 'Unlike');
-						} else {
-							el.set('text', 'Like');
-						}
+			$.ajax({
+				url: $(this).attr('href')
+			}).done(function () {
+				if (a.hasClass('like')) {
+					if (a.text() == 'Like') {
+						a.html('Unlike');
+					} else {
+						a.html('Like');
 					}
-					el.removeClass('disabled');
-				},
-				url: el.get('href')
-			}).send();
+				}
+				a.removeClass('disabled');
+			});
+			
+			return false;
 		});
 	});
 	
 	// links in post content
-	$$('.post-content a').each(function (el) {
-		el.addEvent('click', function (e) {
-			e.stop();
-			window.open(el.get('href'));
+	jQuery('.post-content a').each(function () {
+		$(this).click(function () {
+			window.open($(this).attr('href'));
+			return false;
 		});
 	});
 	
-	// Tooltips
-	$$('a.show-tooltip').each(function (el) {
-		el.addEvents({
-			'click':      function (e) {
-				e.stop();
-			},
-			'mouseenter': function () {
-				// TODO show tooltip and reuest data from href
-			},
-			'mouseleave': function () {
-				// TODO hide tooltip
-			}
+	// new post
+	if (jQuery('#NewPost')) {
+		jQuery('#NewPost').submit(function () {
+			jQuery('#NewPost input[type=submit]').attr('disabled', 'disabled');
+			
+			$.ajax({
+				data: $(this).serialize(),
+				dataType: 'json',
+				success: function (data) {
+					if (data.success) {					
+						window.location = 'http://' + window.location.hostname + '/share/post/' + data.success.ID;
+					} else {
+						alert('An error occured :(');
+					}
+				},
+				type: 'post',
+				url: $(this).attr('action')
+			});
+			
+			return false;
 		});
-	});
+	};
+	
+	/*
+	// Tooltips
+	jQuery('a.show-tooltip').each(function () { });
+	*/
 	
 	// user menue
-	$$('a.user-menue, a.mobile-menue').each(function (el) {
-		el.addEvent('click', function (e) {
-			var holder = $$('.dropdown')[0].getParent('.row');
-			e.stop();
+	jQuery('a.user-menue, a.mobile-menue').each(function () {
+		$(this).click(function () {
+			var holder = jQuery('.dropdown').closest('.row');
 			
 			if (holder.hasClass('hidden')) {
 				userMenue.show();
 			} else {
 				userMenue.hide();
 			}
+			
+			return false;
 		});
 	});
 	
 });
 
 var userMenue = {
-
-	holder: $$('.dropdown')[0].getParent('.row'),
+	
+	holder: jQuery('.dropdown').closest('.row'),
 	
 	hide: function () {
-		$$('header')[0].removeClass('header-open-mobile');
+		jQuery('header').removeClass('header-open-mobile');
 		this.holder.addClass('hidden');
 	},
 	
@@ -98,12 +116,12 @@ var userMenue = {
 			return;
 		}
 		
-		$$('header')[0].addClass('header-open-mobile');
+		jQuery('header').addClass('header-open-mobile');
 		this.holder.removeClass('hidden');
 		
-		document.body.addEvent('click', function () {
+		jQuery('body').click(function () {
 			userMenue.hide();
-			document.body.removeEvents('click');
+			jQuery('body').unbind('click');
 		});
 	}
 	

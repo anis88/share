@@ -10,10 +10,6 @@ class Content_Controller extends Share_Controller {
 		parent::init();
 	}
 	
-	public function index() {
-		//
-	}
-	
 	public function get() {
 		$params = $this->getURLParams();
 		$page = (string)$params['ID'];
@@ -23,12 +19,12 @@ class Content_Controller extends Share_Controller {
 		))->First();
 		
 		if ($text) {
-			return $this->renderWith('PageContent', array(
+			return $this->renderWith(array('Page', 'PageContent'), array(
 				'Text' => $text->Content,
 				'Title' => $text->Title
 			)); 
 		} else {
-			// redirect
+			$this->redirect('/');
 		}
 	}
 	

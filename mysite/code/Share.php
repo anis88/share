@@ -7,8 +7,10 @@ class Share_Controller extends Controller {
 	public static $allowed_actions = array (
 		'like',
 		'likes',
+		'newpost',
 		'page',
 		'post',
+		'savepost',
 		'search',
 		'unlike',
 		'user'
@@ -39,8 +41,10 @@ class Share_Controller extends Controller {
 		$js_folder = $theme_folder . '/javascript/';
 		
 		$js_array = array(
-			$js_folder . 'mootools-core-1.4.5-full-nocompat-yc.js',
-			$js_folder . 'ToolTip.js',
+			$js_folder . 'third-party/jquery-1.9.1.min.js',
+			$css_folder . 'foundation/javascripts/modernizr.foundation.js',
+			$css_folder . 'foundation/javascripts/app.js',
+			$css_folder . 'foundation/javascripts/jquery.foundation.forms.js',
 			$js_folder . 'init.js',
 			$js_folder . 'soundcloud.js'
 		);
@@ -63,7 +67,7 @@ class Share_Controller extends Controller {
 		$list = new PaginatedList($posts, $this->request);
 		$list->setPageLength(12);
 		
-		return $this->renderWith('Share', array(
+		return $this->renderWith(array('Page', 'Share'), array(
 			'Posts' => $list
 		));
 	}
@@ -71,6 +75,8 @@ class Share_Controller extends Controller {
 	public function like() {
 		$params = $this->getURLParams();
 		$id = (int)$params['ID'];
+		
+		if ( ! Member::currentUserID()) return false;
 		
 		$like_count = Like::get()->filter(array(
 			'PostID' => $id,
@@ -99,24 +105,31 @@ class Share_Controller extends Controller {
 		)); 
 	}
 	
-	public function page() {
-		$params = $this->getURLParams();
-		$page = (int)$params['ID'];
+	public function newpost() {
+		if ( ! Member::currentUserID()) $this->redirect('/');
 		
-		if ($page > 0) {
-			$start = ($page - 1) * $this->per_page;
-			
-			$posts = Post::get()->sort('Created', 'DESC')->limit($this->per_page, $start);
-			
-			if ($posts->Count() > 0) {
-				return $this->renderWith('Share', array(
-					'Posts' => $posts
-				));	
-			} else {
-				$this->redirect('/');
-			}
-		} else {
-			$this->redirect('/');
+		$genres = Genre::get();
+		
+		return $this->renderWith(array('Page', 'NewPost'), array(
+			'Genres' => $genres
+		));
+	}
+	
+	private function nl2p($string, $line_breaks = true, $xml = true) {
+
+		$string = str_replace(array('<p>', '</p>', '<br>', '<br />'), '', $string);
+		
+		// It is conceivable that people might still want single line-breaks
+		// without breaking into a new paragraph.
+		if ($line_breaks == true) {
+			return '<p>'.preg_replace(array("/([\n]{2,})/i", "/([^>])\n([^<])/i"), array("</p>\n<p>", '$1<br'.($xml == true ? ' /' : '').'>$2'), trim($string)).'</p>';
+		}
+		else {
+			return '<p>'.preg_replace(
+			array("/([\n]{2,})/i", "/([\r\n]{3,})/i","/([^>])\n([^<])/i"),
+			array("</p>\n<p>", "</p>\n<p>", '$1<br'.($xml == true ? ' /' : '').'>$2'),
+		
+			trim($string)).'</p>';
 		}
 	}
 	
@@ -126,13 +139,41 @@ class Share_Controller extends Controller {
 		
 		$post = Post::get()->filter('ID', $id)->First();
 		
-		if ( ! $post) {
-			$this->redirect('/');
-		} else {		
-			return $this->renderWith('Post', array(
+		if ($post) {
+			return $this->renderWith(array('Page', 'Post'), array(
 				'Post' => $post,
 				'SoundcloudClientID' => defined('SOUNDCLOUD_CLIENT_ID') ? SOUNDCLOUD_CLIENT_ID : false
 			));
+		} else {
+			$this->redirect('/');
+		}
+	}
+	
+	public function savepost() {
+		if ( ! Member::currentUserID() || ! Director::is_ajax()) {
+			exit;
+		}
+		
+		// retrieve and validate data
+		$postVars = $this->request->postVars();
+		$title = $postVars['Title'];
+		$text = $this->nl2p($postVars['Text']);
+		$genre = $postVars['Genre'];
+		$link = $postVars['Link'];
+		
+		$post = new Post();
+		$post->Title = $title;
+		$post->Content = $text;
+		$post->GenreID = (int)$genre > 0 ? $genre : NULL;
+		$post->Link = $link;
+		$post->MemberID = Member::currentUserID();
+		$post->write();
+		
+		header('Content-type: application/json');
+		if ($post) {
+			echo json_encode(array('success' => array('ID' => $post->ID)));
+		} else {
+			echo json_encode(array('error'));
 		}
 	}
 	
@@ -144,7 +185,7 @@ class Share_Controller extends Controller {
 			'Title:PartialMatch' => $search_term
 		));
 		
-		return $this->renderWith('Share', array(
+		return $this->renderWith(array('Page', 'Share'), array(
 			'Posts' => $posts,
 			'SearchTerm' => $search_term
 		)); 
@@ -176,7 +217,7 @@ class Share_Controller extends Controller {
 			$posts = false;
 		}
 		
-		return $this->renderWith('Share', array(
+		return $this->renderWith(array('Page', 'Share'), array(
 			'Posts' => $posts,
 			'UserName' => $username
 		)); 
