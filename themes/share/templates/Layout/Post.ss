@@ -24,12 +24,14 @@
 		
 		<% if Post.Likes %>
 			<p>
-				<% if Post.hasLiked %><%t Content.You "You" %><% end_if %>
+				<% if Post.hasLiked %>
+					<%t Content.You "You" %>
+					<% if Post.Likes.Count = 1 %><% else %>, <% end_if %>
+				<% end_if %>				
 				<% loop Post.getLikes %>
-					<% if Post.hasLiked %><%t Content.And "and" %><% end_if %>
 					<% if not First && Last %><%t Content.And "and" %><% end_if %>
 					<% if not First && not Last %>, <% end_if %>
-					$FirstName
+					<a href="/share/user/$FirstName">$FirstName</a>
 				<% end_loop %>
 				<% if Post.Likes.Count = 1 %>
 					<% if Post.hasLiked %>

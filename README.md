@@ -14,16 +14,16 @@ See [doc.silverstripe.org](http://doc.silverstripe.org/framework/en/installation
 
  * installation guide
  * pagination
- * page titles
- * notifications (likes)
+ * post from frontend
  * filter by genre
  * embed soundcloud links
  * change locale on demand or get it from member settings
  
 ### planned ###
- 
+
+ * set page titles
+ * notifications (likes)
  * group member names if a post has many likes (>5)
- * post from frontend
  * frontend profile page
  * RSS feed, maybe...
  * get posts via ajax
