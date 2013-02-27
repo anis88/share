@@ -40,11 +40,11 @@
 			<% if Posts.NotFirstPage %>
 				<a class="button" href="$Posts.PrevLink">Prev</a>
 			<% end_if %>
-		</section		
-		<section class="columns six">
-			<% if Posts.NotLastPage %>
-				<a class="button right" href="$Posts.NextLink">Next</a>
-			<% end_if %>
 		</section>
+		<% if Posts.NotLastPage %>
+			<section class="columns six">
+				<a class="button right" href="$Posts.NextLink">Next</a>
+			</section>
+		<% end_if %>
 	</section>
 <% end_if %>
