@@ -13,6 +13,9 @@ body {
 .margin {
   padding: 10px;
 }
+.none {
+  display: none;
+}
 .mobile-only {
   display: none;
 }
@@ -27,6 +30,9 @@ body {
 h1,
 h2,
 h3,
+h4,
+h5,
+h6,
 p,
 a,
 li,
@@ -49,6 +55,10 @@ h2 {
   font-size: 24px;
   margin: 0 0 20px;
 }
+h6 {
+  margin-bottom: 5px;
+}
+h6,
 p,
 a,
 li {
@@ -59,13 +69,21 @@ ul {
 }
 h1,
 h2,
+h3,
+h4,
+h5,
+h6,
 header *,
 article *,
 .twelve p,
 a:active,
 a:focus,
+.alert-box a,
 li {
   color: #fff;
+}
+.alert-box p {
+  margin: 0;
 }
 .anthropomorphic {
   background-color: #D6BC67;
@@ -116,6 +134,15 @@ input[type=search] {
   color: #aaa;
 }
 input:-moz-placeholder {
+  color: #aaa;
+}
+::-webkit-textarea-placeholder {
+  color: #aaa;
+}
+:-ms-textarea-placeholder {
+  color: #aaa;
+}
+textarea:-moz-placeholder {
   color: #aaa;
 }
 form label {
@@ -246,7 +273,7 @@ p.author {
   margin-bottom: 10px;
 }
 .post {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .post h1,
 .post p,
@@ -255,12 +282,25 @@ p.author {
 }
 .post iframe {
   display: block;
-  margin: 0 0 20px;
+  margin: 0 0 10px;
   max-width: 100%;
   min-height: 166px;
 }
 .post .button {
   margin-bottom: 10px;
+}
+.comments img {
+  float: left;
+  padding: 0 20px 20px 0;
+}
+.comments p {
+  margin-bottom: 5px;
+}
+.comments form img {
+  padding: 0 10px 0 0;
+}
+.comments form input[type=text] {
+  width: 90%;
 }
 @media only screen and (max-width: 767px) {
   .hide-on-mobile {

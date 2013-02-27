@@ -6,6 +6,9 @@ en:
   Color:
     PLURALNAME: Colors
     SINGULARNAME: Color
+  Comment:
+    PLURALNAME: Comments
+    SINGULARNAME: Comment
   Genre:
     PLURALNAME: Genrs
     SINGULARNAME: Genre

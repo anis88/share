@@ -36,12 +36,14 @@
 
 <% if Posts.MoreThanOnePage %>
 	<section class="pagination row">
-		<section class="columns twelve">
+		<section class="columns six">
 			<% if Posts.NotFirstPage %>
 				<a class="button" href="$Posts.PrevLink">Prev</a>
 			<% end_if %>
+		</section		
+		<section class="columns six">
 			<% if Posts.NotLastPage %>
-				<a class="button" href="$Posts.NextLink">Next</a>
+				<a class="button right" href="$Posts.NextLink">Next</a>
 			<% end_if %>
 		</section>
 	</section>

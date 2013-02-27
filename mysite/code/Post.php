@@ -18,13 +18,14 @@ class Post extends DataObject {
 	);
 	
 	static $has_many = array(
+		'Comments' => 'Comment',
 		'Likes' => 'Like'
 	);
 	
 	static $summary_fields = array(
-        'Title',
-		'Genre.Title',
-		'Member.FirstName'
+        'Title' => 'Title',
+		'Genre.Title' => 'Genre',
+		'Member.FirstName' => 'Username'
     );
 	
 	public function canCreate($member = NULL){ 

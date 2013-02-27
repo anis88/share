@@ -4,12 +4,15 @@
 		
 		<h1>$Post.Title</h1>
 		
-		<p><% if Post.Genre.Title %>$Post.Genre.Title &ndash; <% end_if %><%t Content.PostedOn "posted on" %> $Post.Created.Format(d/m/y) <%t Content.By "by" %> <a href="/posts/user/$Post.Member.FirstName">$Post.Member.FirstName</a></p>
-	
+		<p>
+			<% if Post.Genre.Title %>$Post.Genre.Title &ndash; <% end_if %>
+			<%t Content.PostedOn "posted on" %> $Post.Created.Format(d/m/y) <%t Content.By "by" %> <a href="/posts/user/$Post.Member.FirstName">$Post.Member.FirstName</a>
+		</p>
+			
 		<section class="post-content">
 			$Post.Content
 		</section>
-	
+			
 		<% if Post.hasYouTubeID %>
 			<iframe width="560" height="315" src="http://www.youtube.com/embed/$Post.YouTubeID" frameborder="0" allowfullscreen></iframe>
 		<% end_if %>
@@ -45,6 +48,16 @@
 			</p>
 		<% end_if %>
 		
+		<!-- Toggle output in Config -->
+		<% if Post.hasYouTubeID %>
+			<% if Post.Member.Locale="de_DE" %><% else %>
+				<div class="alert-box hide-on-mobile">
+					<h6>Du siehst nichts?</h6>
+					<p>Kopiere den YouTube Link (entferne alle GET-Parameter außer ?v=[YouTubeID]) und füge ihn auf <a href="http://www.hidemyass.com/youtube-proxy/" class="new-window">Hide My Ass!</a> ein.</p>
+				</div>
+			<% end_if %>
+		<% end_if %>
+		
 		<% if Post.hasLiked %>
 			<a href="/post/unlike/$Post.ID" class="button like xhr">Unlike</a>
 		<% else %>
@@ -61,4 +74,33 @@
 		<% end_if %>
 		
 	</section>
+	
+</section>
+
+<section id="Comments" class="comments row">
+
+	<div class="columns twelve">
+		<h3><%t Title.Comments "Comments" %></h3>
+	</div>
+	
+	<div class="comments">
+		<% loop Post.Comments %>
+			<div class="columns twelve">
+				<img src="$getGravatarImage(60)" title="Gravatar - A Globally Recognized Avatar">
+				<p><a href="/share/user/$Member.FirstName">$Member.FirstName</a> $Created.Ago</p>
+				$Content
+			</div>
+		<% end_loop %>
+	</div>
+	
+	<% if CurrentMember %>
+		<div class="columns twelve">
+			<form action="/share/comment/$Post.ID">
+				<img src="$getGravatarImageForCurrentMember(30)">
+				<input type="text" name="Text" placeholder="write a comment ..." required></textarea>
+				<input type="submit" value="save comment" class="button mobile-only">
+			</form>
+		</div>
+	<% end_if %>
+	
 </section>

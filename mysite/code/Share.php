@@ -5,6 +5,7 @@ class Share_Controller extends Controller {
 	private $per_page;
 
 	public static $allowed_actions = array (
+		'comment',
 		'like',
 		'likes',
 		'newpost',
@@ -70,6 +71,38 @@ class Share_Controller extends Controller {
 		return $this->renderWith(array('Page', 'Share'), array(
 			'Posts' => $list
 		));
+	}
+	
+	public function comment() {
+		$params = $this->getURLParams();
+		$id = (int)$params['ID'];
+		
+		if ( ! Member::currentUserID()) return false;
+		
+		$postVars = $this->request->postVars();
+		$text = trim($postVars['Text']);
+		
+		if ($text == '') return false;
+		
+		$comment = new Comment();
+		$comment->Content = $this->nl2p($text);
+		$comment->PostID = $id;
+		$comment->MemberID = Member::currentUserID();
+		$comment->write();
+		
+		header('Content-type: application/json');
+		echo json_encode(array(
+			'Comment' => array(
+				'Content' => $comment->Content,
+				'Image' => $this->getGravatarImageForCurrentMember(60),
+				'Member' => $comment->Member()->FirstName,
+				'Created' => 'just now'
+			)
+		));
+	}
+	
+	public function getGravatarImageForCurrentMember($size = 40) {
+		return 'http://www.gravatar.com/avatar/' . md5(strtolower(trim(Member::CurrentUser()->Email))) . '?s=' . $size;
 	}
 	
 	public function like() {

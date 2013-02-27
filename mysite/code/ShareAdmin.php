@@ -5,7 +5,8 @@ class ShareAdmin extends ModelAdmin {
     public static $managed_models = array(
         'Color',
 		'Genre',
-		'PageContent'
+		'PageContent',
+		'Comment'
     );
  
     static $url_segment = 'shareadmin'; 

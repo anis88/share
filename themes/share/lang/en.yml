@@ -11,6 +11,7 @@ en:
     SignIn: 'sign in'
     SignOut: 'sign out'
   Title:
+    Comments: Comments
     newpost: 'add a post'
     results: '{resultcount} results for {searchterm}'
     usershares: 'All shares from  {username}'

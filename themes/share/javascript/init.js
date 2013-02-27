@@ -56,6 +56,44 @@ $(document).ready(function  () {
 			return false;
 		});
 	});
+
+	// new comment
+	if (jQuery('#Comments')) {
+		jQuery('#Comments form').submit(function () {
+			$.ajax({
+				data: $(this).serialize(),
+				dataType: 'json',
+				success: function (data) {
+					if (data.Comment) {
+						jQuery('#Comments form input[type=text]').val('');
+						
+						var div = jQuery('<div/>').addClass('columns twelve');
+						jQuery('<img/>', {
+							src: data.Comment.Image
+						}).appendTo(div);
+						var p = jQuery('<p/>').appendTo(div);
+						jQuery('<a/>', {
+							href: '/share/user/' + data.Comment.Member,
+							text: data.Comment.Member
+						}).appendTo(p);
+						jQuery('<span/>', {
+							text: ' ' + data.Comment.Created
+						}).appendTo(p);
+						jQuery('<div/>', {
+							html: data.Comment.Content
+						}).appendTo(div);
+						jQuery('div.comments').append(div);
+					} else {
+						alert('An error occured :(');
+					}
+				},
+				type: 'post',
+				url: $(this).attr('action')
+			});
+			
+			return false;
+		});
+	}
 	
 	// new post
 	if (jQuery('#NewPost')) {

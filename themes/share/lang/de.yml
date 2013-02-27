@@ -11,6 +11,7 @@ de:
     SignIn: 'anmelden'
     SignOut: 'abmelden'
   Title:
+    Comments: Kommentare
     newpost: 'Neuer Post'
     results: '{resultcount} Treffer für {searchterm}'
     usershares: 'Alle shares von  {username}'
