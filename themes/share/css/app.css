@@ -272,6 +272,9 @@ p.author {
 .pagination {
   margin-bottom: 10px;
 }
+.pagination .six {
+  margin-bottom: 10px;
+}
 .post {
   margin-bottom: 10px;
 }

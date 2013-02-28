@@ -65,6 +65,9 @@ $(document).ready(function  () {
 				dataType: 'json',
 				success: function (data) {
 					if (data.Comment) {
+						
+						if (jQuery('.no-comments')) jQuery('.no-comments').detach();
+						
 						jQuery('#Comments form input[type=text]').val('');
 						
 						var div = jQuery('<div/>').addClass('columns twelve');

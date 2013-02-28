@@ -6,13 +6,15 @@ en:
     LikeThisSingular: 'likes this'
     PostedOn: 'posted on'
     You: You
+    nocomments: 'Nobody commented on this post yet'
   Menu:
     About: 'about share'
     SignIn: 'sign in'
     SignOut: 'sign out'
   Title:
     Comments: Comments
+    likes: 'your likes'
     newpost: 'add a post'
     results: '{resultcount} results for {searchterm}'
     usershares: 'All shares from  {username}'
-    your: your
+    your: Your

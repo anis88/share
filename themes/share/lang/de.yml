@@ -6,6 +6,7 @@ de:
     LikeThisSingular: 'gefällt das'
     PostedOn: 'gepostet am'
     You: Dir
+    nocomments: 'Dieser Post wurde noch nicht kommentiert'
   Menu:
     About: 'über share'
     SignIn: 'anmelden'
@@ -15,4 +16,4 @@ de:
     newpost: 'Neuer Post'
     results: '{resultcount} Treffer für {searchterm}'
     usershares: 'Alle shares von  {username}'
-    your: Deine
+    your: 'Deine Likes'

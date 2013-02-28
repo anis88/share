@@ -49,7 +49,7 @@
 						<a href="/share/newpost"><%t Title.newpost "add a post" %></a>
 					</li>
 					<li>
-						<a href="/user/likes"><%t Title.your "your" %> likes</a>
+						<a href="/user/likes"><%t Title.likes "your likes" %></a>
 					</li>
 					<!--
 					<li>

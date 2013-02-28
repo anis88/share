@@ -84,13 +84,19 @@
 	</div>
 	
 	<div class="comments">
-		<% loop Post.Comments %>
-			<div class="columns twelve">
-				<img src="$getGravatarImage(60)" title="Gravatar - A Globally Recognized Avatar">
-				<p><a href="/share/user/$Member.FirstName">$Member.FirstName</a> $Created.Ago</p>
-				$Content
+		<% if Post.Comments %>
+			<% loop Post.Comments %>
+				<div class="columns twelve">
+					<img src="$getGravatarImage(60)" title="Gravatar - A Globally Recognized Avatar">
+					<p><a href="/share/user/$Member.FirstName">$Member.FirstName</a> $Created.Ago</p>
+					$Content
+				</div>
+			<% end_loop %>
+		<% else %>
+			<div class="columns twelve no-comments">
+				<p><%t Content.nocomments "Nobody commented on this post yet" %></p>
 			</div>
-		<% end_loop %>
+		<% end_if %>
 	</div>
 	
 	<% if CurrentMember %>
