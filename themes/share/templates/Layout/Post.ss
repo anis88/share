@@ -5,7 +5,7 @@
 		<h1>$Post.Title</h1>
 		
 		<p>
-			<% if Post.Genre.Title %>$Post.Genre.Title &ndash; <% end_if %>
+			<% if Post.Genre.Title %><a href="/share/bygenre/$Post.GenreID">$Post.Genre.Title</a> &ndash; <% end_if %>
 			<%t Content.PostedOn "posted on" %> $Post.Created.Format(d/m/y) <%t Content.By "by" %> <a href="/posts/user/$Post.Member.FirstName">$Post.Member.FirstName</a>
 		</p>
 			

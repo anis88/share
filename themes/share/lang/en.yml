@@ -13,8 +13,9 @@ en:
     SignOut: 'sign out'
   Title:
     Comments: Comments
+    genre: 'All posts in {genre}'
     likes: 'your likes'
     newpost: 'add a post'
     results: '{resultcount} results for {searchterm}'
     usershares: 'All shares from  {username}'
-    your: Your
+    yourlikes: 'Your Likes'

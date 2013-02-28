@@ -1,4 +1,4 @@
-<% if LikesPage || SearchTerm || UserName %>
+<% if LikesPage || SearchTerm || UserName || Genre %>
 	<section class="row">
 		<div class="columns twelve">
 			<% if UserName %>
@@ -6,7 +6,9 @@
 			<% else_if SearchTerm %>
 				<h1><%t Title.results "{resultcount} results for {searchterm}" resultcount=$Posts.Count searchterm=$SearchTerm %></h1>
 			<% else_if LikesPage %>
-				<h1><%t Title.your "Your" %> Likes</h1>
+				<h1><%t Title.yourlikes "Your Likes" %></h1>
+			<% else_if Genre %>
+				<h1><%t Title.genre "All posts in {genre}" genre=$Genre %></h1>
 			<% end_if %>
 		</div>
 	</section>

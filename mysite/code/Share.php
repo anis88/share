@@ -5,6 +5,7 @@ class Share_Controller extends Controller {
 	private $per_page;
 
 	public static $allowed_actions = array (
+		'bygenre',
 		'comment',
 		'like',
 		'likes',
@@ -71,6 +72,22 @@ class Share_Controller extends Controller {
 		return $this->renderWith(array('Page', 'Share'), array(
 			'Posts' => $list
 		));
+	}
+	
+	public function bygenre() {
+		$params = $this->getURLParams();
+		$genre_id = (int)$params['ID'];
+		
+		$genre = Genre::get()->filter('ID', $genre_id)->First();
+		
+		if ( ! $genre || ! $genre_id) $this->redirect('/');
+		
+		$posts = Post::get()->filter('GenreID', $genre_id)->sort('Created', 'DESC');
+		
+		return $this->renderWith(array('Page', 'Share'), array(
+			'Posts' => $posts,
+			'Genre' => $genre->Title
+		)); 
 	}
 	
 	public function comment() {
