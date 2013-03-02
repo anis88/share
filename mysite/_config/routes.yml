@@ -10,5 +10,5 @@ Director:
     'posts/$Action!/$ID!': 'Share_Controller'
     'user/$Action!': 'User_Controller'
     'share/$Action!/$ID': 'Share_Controller'
-    'view/$Action!/$ID!': Share_Controller
-    '': Share_Controller
+    'view/$Action!/$ID!': 'Share_Controller'
+    '': 'Share_Controller'

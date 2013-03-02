@@ -18,10 +18,6 @@ class Share_Controller extends Controller {
 		'user'
 	);
 	
-	public static $url_handlers = array(
-        //'posts/user/$ID' => 'user'
-    );
-	
 	public function init() {
 		parent::init();
 		
@@ -87,7 +83,7 @@ class Share_Controller extends Controller {
 		return $this->renderWith(array('Page', 'Share'), array(
 			'Posts' => $posts,
 			'Genre' => $genre->Title
-		)); 
+		));
 	}
 	
 	public function comment() {

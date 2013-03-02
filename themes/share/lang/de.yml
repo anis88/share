@@ -14,7 +14,7 @@ de:
   Title:
     Comments: Kommentare
     genre: 'Alle Posts in {genre}'
+    likes: 'Deine Likes'
     newpost: 'Neuer Post'
     results: '{resultcount} Treffer für {searchterm}'
     usershares: 'Alle shares von  {username}'
-    your: 'Deine Likes'

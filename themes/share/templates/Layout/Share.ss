@@ -21,7 +21,7 @@
 			<article class="columns four">
 				<div class="content" style="background-color:#$Member.Color.Hex;">
 					<div class="margin">
-						<h2><a href="view/post/$ID">$Title</a></h2>
+						<h2><a href="/view/post/$ID">$Title</a></h2>
 						<p class="date">$Created.Format(d/m/y)</p>
 						<p class="author">
 							<a href="/posts/user/$Member.FirstName" class="posts von $Member.FirstName">$Member.FirstName</a>

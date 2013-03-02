@@ -16,7 +16,7 @@
 			<textarea name="Text" id="Text" cols="30" rows="10"></textarea>
 			
 			<label for="Genre">Genre</label>
-			<select name="Genre" id="Genre">
+			<select name="Genre" id="Genre" class="medium">
 				<option value="">-- select genre --</option>
 				<% loop Genres %>
 					<option value="$ID">$Title</option>
