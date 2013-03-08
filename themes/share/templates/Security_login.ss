@@ -3,7 +3,8 @@
 <head>
     <% base_tag %>
     <title>share :: sign in</title>
-	<% require themedCSS(foundation/stylesheets/foundation.min) %>
+	<% require themedCSS(foundation/css/normalize) %>
+	<% require themedCSS(foundation/css/foundation.min) %>
 	<% require themedCSS(app) %>
 	<meta name="viewport" content="width=device-width">
 	<meta name="robots" content="noindex, nofollow">
@@ -12,7 +13,7 @@
     
 	<header>
 		<div class="row">
-	        <div class="column twelve">
+	        <div class="column large-12">
 				<h1>login</h1>
 			</div>
 		</div>
@@ -20,19 +21,19 @@
 	
     <% if Content %>
 		<div class="row">
-	        <div class="column twelve">
+	        <div class="column large-12">
 			    <div class="PageContent">$Content</div>
 			</div>
 		</div>
     <% end_if %>
 
     <div id="CMSLogin" class="row">
-        <div class="column twelve">
+        <div class="column large-12">
             $Form
         </div>
     </div>
 
-	<script src="/themes/share/javascript/mootools-core-1.4.5-full-nocompat-yc.js"></script>
+	<script src="/themes/share/javascript/third-party/jquery-1.9.1.min.js"></script>
 	<script src="/themes/share/javascript/init.js"></script>
 	
 </body>

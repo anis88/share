@@ -1,6 +1,6 @@
 <section class="row">
 	
-	<section class="columns twelve">
+	<section class="columns large-12">
 		
 		<h1>$Title</h1>
 		

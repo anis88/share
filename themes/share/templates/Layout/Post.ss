@@ -1,6 +1,6 @@
 <section class="post row">
 	
-	<section class="columns twelve">
+	<section class="columns large-12">
 		
 		<h1>$Post.Title</h1>
 		
@@ -12,7 +12,11 @@
 		<section class="post-content">
 			$Post.Content
 		</section>
-			
+		
+		<% if Post.hasVimeoID %>
+			<iframe src="http://player.vimeo.com/video/$Post.VimeoID" width="560" height="315" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+		<% end_if %>
+		
 		<% if Post.hasYouTubeID %>
 			<iframe width="560" height="315" src="http://www.youtube.com/embed/$Post.YouTubeID" frameborder="0" allowfullscreen></iframe>
 		<% end_if %>
@@ -81,28 +85,28 @@
 
 <section id="Comments" class="comments row">
 
-	<div class="columns twelve">
+	<div class="columns large-12">
 		<h3><%t Title.Comments "Comments" %></h3>
 	</div>
 	
 	<div class="comments">
 		<% if Post.Comments %>
 			<% loop Post.Comments %>
-				<div class="columns twelve">
+				<div class="columns large-12">
 					<img src="$getGravatarImage(60)" title="Gravatar - A Globally Recognized Avatar">
 					<p><a href="/share/user/$Member.FirstName">$Member.FirstName</a> $Created.Ago</p>
 					$Content
 				</div>
 			<% end_loop %>
 		<% else %>
-			<div class="columns twelve no-comments">
+			<div class="columns large-12 no-comments">
 				<p><%t Content.nocomments "Nobody commented on this post yet" %></p>
 			</div>
 		<% end_if %>
 	</div>
 	
 	<% if CurrentMember %>
-		<div class="columns twelve">
+		<div class="columns large-12">
 			<form action="/share/comment/$Post.ID">
 				<img src="$getGravatarImageForCurrentMember(30)">
 				<input type="text" name="Text" placeholder="write a comment ..." required></textarea>

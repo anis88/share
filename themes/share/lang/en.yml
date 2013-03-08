@@ -7,12 +7,19 @@ en:
     PostedOn: 'posted on'
     You: You
     nocomments: 'Nobody commented on this post yet'
+  Form:
+    Description: Description
+    Genre: Genre
+    Link: 'YouTube, Soundcloud or Vimeo Link'
+    Submit: save
+    Title: Title
   Menu:
     About: 'about share'
     SignIn: 'sign in'
     SignOut: 'sign out'
   Title:
     Comments: Comments
+    Newpost: 'Add Post'
     genre: 'All posts in {genre}'
     likes: 'your likes'
     newpost: 'add a post'

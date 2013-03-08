@@ -20,6 +20,7 @@
 @header-dark: darken(@header-color, 10%);
 @header-light: lighten(@header-color, 10%);
 @font-color: #fff;
+@font-color-placeholder: #aaa;
 
 /* Font Sizes */
 @extra-large-text: 44px;
@@ -140,7 +141,7 @@ h5,
 h6,
 header *,
 article *,
-.twelve p,
+.large-12 p,
 a:active,
 a:focus,
 .alert-box a,
@@ -150,44 +151,6 @@ li {
 
 .alert-box p {
 	margin: 0;
-}
-
-/* -----------------------------------------
-   Colors / names from colourlovers.com
------------------------------------------ */
-
-.anthropomorphic {
-    background-color: #D6BC67;
-}
-.die-in-the-moonlyt {
-    background-color: #56bbd2;
-}
-.green335 {
-    background-color: #91A240;
-}
-.metro {
-    background-color: #629995;
-}
-.metropolis {
-    background-color: #E0B204;
-}
-.no {
-	background-color: #083F4D;
-}
-.phenomenon {
-    background-color: #C7C897;
-}
-.silk {
-    background-color: #FAF8F2;
-}
-.trade-off {
-    background-color: #E66727;
-}
-.valley-pass {
-    background-color: #9DAB78;
-}
-.wool-white {
-	background-color: #E8E8E8;
 }
 
 /* -----------------------------------------
@@ -201,13 +164,13 @@ header form {
 input[type=search] {
     border-radius: 4px;
 }
-::-webkit-input-placeholder { color: #aaa; }
-::-moz-placeholder { color: #aaa; }
-:-ms-input-placeholder { color: #aaa; }
-input:-moz-placeholder { color: #aaa; }
-::-webkit-textarea-placeholder { color: #aaa; }
-:-ms-textarea-placeholder { color: #aaa; }
-textarea:-moz-placeholder { color: #aaa; }
+::-webkit-input-placeholder { color: @font-color-placeholder; }
+::-moz-placeholder { color: @font-color-placeholder; }
+:-ms-input-placeholder { color: @font-color-placeholder; }
+input:-moz-placeholder { color: @font-color-placeholder; }
+::-webkit-textarea-placeholder { color: @font-color-placeholder; }
+:-ms-textarea-placeholder { color: @font-color-placeholder; }
+textarea:-moz-placeholder { color: @font-color-placeholder; }
 
 form label {
 	color: @font-color;
@@ -215,6 +178,15 @@ form label {
 	&.left {
 		float: none;
 	}
+}
+
+form.custom a,
+form.custom li {
+	font-size: 1em;
+}
+
+textarea {
+	height: 200px;
 }
 
 input[type=submit] {
@@ -233,7 +205,7 @@ input[type=submit] {
 header {
 	background-color: @header-color;
 	height: 40px;
-    margin: 0 0 20px;
+    margin: 0 0 @spacing-larger;
     .row {
         height: 40px;
 	}
@@ -272,9 +244,6 @@ a.notifications {
     .notifications.unread {
         background-image: url(../images/icons/notifications-orange.png);
     }
-
-.user-menue {
-}
 
 .notification-count {	
 }
@@ -322,29 +291,33 @@ a.notifications {
    Tiles
 ----------------------------------------- */
 
-#Posts:hover article:not(:hover) {
+#Posts:hover div.content:not(:hover) {
 	opacity: 0.4;
 }
 
 section h1 {
-    margin: 0 0 20px;
+    margin: 0 0 @spacing-default;
 }
 
 article  {
-    margin: 0 0 20px;
+    margin: 0 0 @spacing-larger;
 	opacity: 1;
-	.transition;
-    div.content  {
+    div.content {
+		.transition;
         height: 120px;
         overflow: hidden;
 	}
 }
 
 article {
+	h2 {
+		margin: 0;
+	}
 	h2 a {
 		display: block;
 		font-size: @medium-text;
-		height: 55px;
+		height: 75px;
+		overflow: hidden;
 	}
 	a:hover {
 		color: @font-color;
@@ -366,10 +339,12 @@ p.author {
    Pagination
 ----------------------------------------- */
 
-.pagination {
-    margin-bottom: @spacing-default;
-	.six {
-		margin-bottom: @spacing-default;	
+.pagination-buttons {
+	.large-6 {
+		margin-bottom: @spacing-default;
+	}
+	a {
+		margin: 0;
 	}
 }
 
@@ -400,7 +375,6 @@ p.author {
 ----------------------------------------- */
 
 .comments {
-	.twelve { }
 	img {
 		float: left;
 		padding: 0 20px 20px 0;
@@ -445,7 +419,7 @@ p.author {
 		.row:last-of-type {
 			height: auto;
 		}
-		.three {
+		.row .large-3 {
 			padding: 0;
 		}
 		h1 {
@@ -490,6 +464,10 @@ p.author {
 	
 	#Posts:hover article:not(:hover) {
 		opacity: 1;
+	}
+	
+	.button.right {
+		float: none;
 	}
 	
 	.mobile-menue {

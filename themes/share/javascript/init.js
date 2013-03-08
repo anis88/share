@@ -167,3 +167,5 @@ var userMenue = {
 	}
 	
 };
+
+$(document).foundation();

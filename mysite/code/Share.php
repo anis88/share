@@ -30,8 +30,8 @@ class Share_Controller extends Controller {
 		Requirements::set_combined_files_folder($combined_folder);
 		
 		// include css
-		Requirements::css($css_folder . 'foundation/stylesheets/foundation.min.css');
-		Requirements::css($css_folder . 'ToolTip.css');
+		Requirements::css($css_folder . 'foundation/css/normalize.css');
+		Requirements::css($css_folder . 'foundation/css/foundation.min.css');
 		// TODO pass target folder
 		Requirements::css($css_folder . 'app.less', 'screen', BASE_PATH);
 		
@@ -40,9 +40,10 @@ class Share_Controller extends Controller {
 		
 		$js_array = array(
 			$js_folder . 'third-party/jquery-1.9.1.min.js',
-			$css_folder . 'foundation/javascripts/modernizr.foundation.js',
-			$css_folder . 'foundation/javascripts/app.js',
-			$css_folder . 'foundation/javascripts/jquery.foundation.forms.js',
+			$js_folder . 'third-party/foundation/vendor/zepto.js',
+			$js_folder . 'third-party/foundation/vendor/custom.modernizr.js',
+			$js_folder . 'third-party/foundation/foundation.min.js',
+			$js_folder . 'third-party/foundation/foundation/foundation.forms.js',
 			$js_folder . 'init.js',
 			$js_folder . 'soundcloud.js'
 		);

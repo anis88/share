@@ -12,15 +12,15 @@
 	<header>
 		
 	    <div class="row">
-	        <div class="column four">
+	        <div class="column large-4">
 	            <h1><a href="/">share</a></h1>
 	        </div>
-	        <div class="column four hide-on-mobile search-form">
+	        <div class="column large-4 hide-on-mobile search-form">
 	            <form action="{$BaseURL}share/search/">
-	                <input type="search" class="twelve" placeholder="search"<% if SearchTerm %> value="$SearchTerm"<% end_if %>>
+	                <input type="search" class="large-12" placeholder="search"<% if SearchTerm %> value="$SearchTerm"<% end_if %>>
                 </form>
 	        </div>
-	        <div class="column hide-on-mobile three offset-by-one">
+	        <div class="column hide-on-mobile large-3 large-offset-1">
 				<div class="menue">
 					<% if CurrentMember %>
 						<a href="#" class="user-menue">$CurrentMember.FirstName</a>
@@ -39,7 +39,7 @@
 	    </div>
 		
 		<div class="hidden row">
-			<div class="columns offset-by-nine three">
+			<div class="columns large-offset-9 large-3">
 				<ul class="dropdown">
 					<li class="hide-on-mobile">
 						<a href="/admin" class="new-window">admin</a>

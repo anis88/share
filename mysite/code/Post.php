@@ -8,6 +8,7 @@ class Post extends DataObject {
 		'Content' => 'HTMLText',
 		'Title' => 'Varchar(100)',
 		'Link' => 'Varchar(100)',
+		'VimeoID' => 'Varchar(20)',
 		'YouTubeID' => 'Varchar(20)'
     );
 	
@@ -62,7 +63,7 @@ class Post extends DataObject {
 			new DropdownField('GenreID', 'Genre', $dropdown_values, 0, null, '-- select genre --'),
 			// adjust the max upload size to your server settings
 			new UploadField('File', 'File (max. 16MB)'),
-			new TextField('Link', 'Youtube or Soundcloud Link')
+			new TextField('Link', 'Youtube, Soundcloud or Vimeo Link')
 		);
 	}
 	
@@ -73,6 +74,16 @@ class Post extends DataObject {
 		         ->exclude('ID', Member::currentUserID());
 		
 		return $likes;
+	}
+	
+	public function getVimeoID() {
+		// embed link http://vimeo.com/ID
+		if (strrpos($this->Link, 'vimeo.com')) {
+			preg_match('/.*vimeo.com\/([^?]*)/', $this->Link, $match);
+			return $match[1];
+		}
+		
+		return false;
 	}
 	
 	public function getYouTubeID() {
@@ -101,6 +112,10 @@ class Post extends DataObject {
 		return strrpos($this->Link, 'soundcloud.com');
 	}
 	
+	public function hasVimeoID() {
+		return $this->VimeoID;
+	}
+	
 	// useless helper...Post.YouTubeID is true in the template even if NULL
 	public function hasYouTubeID() {
 		return $this->YouTubeID;
@@ -109,6 +124,10 @@ class Post extends DataObject {
 	public function onBeforeWrite() {	
 		if ( ! $this->MemberID) {
 			$this->MemberID = Member::currentUserID();
+		}
+		// stores extracted vimeo id if available
+		if ($this->getVimeoID()) {
+			$this->VimeoID = $this->getVimeoID();
 		}
 		// stores extracted youtube id if available
 		if ($this->getYouTubeID()) {

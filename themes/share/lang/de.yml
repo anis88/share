@@ -7,14 +7,22 @@ de:
     PostedOn: 'gepostet am'
     You: Dir
     nocomments: 'Dieser Post wurde noch nicht kommentiert'
+  Form:
+    Description: Beschreibung
+    Genre: Genre
+    Link: 'YouTube, Soundcloud oder Vimeo Link'
+    Submit: speichern
+    Title: Titel
   Menu:
     About: 'über share'
     SignIn: 'anmelden'
     SignOut: 'abmelden'
   Title:
     Comments: Kommentare
+    Newpost: 'Neuer Post'
     genre: 'Alle Posts in {genre}'
     likes: 'Deine Likes'
     newpost: 'Neuer Post'
     results: '{resultcount} Treffer für {searchterm}'
     usershares: 'Alle shares von  {username}'
+    yourlikes: 'Deine Likes'
