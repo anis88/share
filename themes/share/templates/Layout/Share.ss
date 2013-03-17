@@ -22,7 +22,8 @@
 				<div class="content" style="background-color:#$Member.Color.Hex;">
 					<div class="margin">
 						<h2><a href="/view/post/$ID">$Title</a></h2>
-						<p class="date">$Created.Format(d/m/y)</p>
+						<p class="date<% if $Genre.Title %> toggle<% end_if %>">$Created.Format(d/m/y)</p>
+                        <% if $Genre.Title %><p class="genre"><a href="/share/bygenre/$Genre.ID">$Genre.Title</a></p><% end_if %>
 						<p class="author">
 							<a href="/posts/user/$Member.FirstName" class="posts von $Member.FirstName">$Member.FirstName</a>
 						</p>

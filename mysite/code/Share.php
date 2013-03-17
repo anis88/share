@@ -5,6 +5,7 @@ class Share_Controller extends Controller {
 	private $per_page;
 
 	public static $allowed_actions = array (
+		'autocomplete',
 		'bygenre',
 		'comment',
 		'like',
@@ -69,6 +70,24 @@ class Share_Controller extends Controller {
 		return $this->renderWith(array('Page', 'Share'), array(
 			'Posts' => $list
 		));
+	}
+	
+	public function autocomplete() {
+		$params = $this->getURLParams();
+		$search_term = $params['ID'];
+		
+		$posts = Genre::get()->filter(array(
+			'Title:PartialMatch' => $search_term
+		));
+		
+		$posts = Post::get()->filter(array(
+			'Title:PartialMatch' => $search_term
+		));
+		
+		return $this->renderWith(array('Autocomplete'), array(
+			'Genre' => $genre,
+			'Posts' => $posts,
+		)); 
 	}
 	
 	public function bygenre() {

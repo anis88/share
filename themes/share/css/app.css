@@ -233,18 +233,32 @@ article h2 a {
   display: block;
   font-size: 24px;
   height: 75px;
+  overflow: hidden;
 }
 article a:hover {
   color: #fff;
   text-decoration: underline;
 }
-p.author,
-p.date {
+article p.author,
+article p.genre,
+article p.date {
   float: left;
   width: 50%;
 }
-p.author {
+article p.genre {
+  display: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+article p.author {
   text-align: right;
+}
+article:hover p.date.toggle {
+  display: none;
+}
+article:hover p.genre {
+  display: block;
 }
 .pagination-buttons .large-6 {
   margin-bottom: 10px;

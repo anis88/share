@@ -16,8 +16,8 @@
 	            <h1><a href="/">share</a></h1>
 	        </div>
 	        <div class="column large-4 hide-on-mobile search-form">
-	            <form action="{$BaseURL}share/search/">
-	                <input type="search" class="large-12" placeholder="search"<% if SearchTerm %> value="$SearchTerm"<% end_if %>>
+	            <form action="{$BaseURL}share/automplete/">
+	                <input type="search" class="large-12" placeholder="search for title or genre"<% if SearchTerm %> value="$SearchTerm"<% end_if %>>
                 </form>
 	        </div>
 	        <div class="column hide-on-mobile large-3 large-offset-1">

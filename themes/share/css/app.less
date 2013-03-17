@@ -323,16 +323,27 @@ article {
 		color: @font-color;
 		text-decoration: underline;
 	}
-}
-
-p.author,
-p.date {
-    float: left;
-    width: 50%;
-}
-
-p.author {
-    text-align: right;
+    p.author,
+    p.genre,
+    p.date {
+        float: left;
+        width: 50%;
+    }
+    p.genre {
+        display: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    p.author {
+        text-align: right;
+    }   
+    &:hover p.date.toggle {
+        display: none;
+    }
+    &:hover p.genre {
+        display: block;     
+    }
 }
 
 /* -----------------------------------------
