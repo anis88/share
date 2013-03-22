@@ -6,11 +6,13 @@
 :: Colors
 :: Forms
 :: Header
+:: Autocomplete
 :: Sign In Mobile
 :: Tiles
 :: Pagination
 :: Post
 :: Comments
+:: Playlist
 :: Mobile Styles
 */
 
@@ -49,6 +51,7 @@
 
 body {
     background-color: @body-color;
+	color: @font-color;
 }
 
 .button {
@@ -141,7 +144,7 @@ h5,
 h6,
 header *,
 article *,
-.large-12 p,
+p,
 a:active,
 a:focus,
 .alert-box a,
@@ -274,6 +277,55 @@ a.notifications {
 }
 
 /* -----------------------------------------
+   Autocomplete
+----------------------------------------- */
+
+div.search-form {
+	position: relative;
+}
+
+.autocomplete-list {
+	background: #fff;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, .5);
+	list-style: none;
+	margin: 0;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	.transition;
+	width: 100%;
+	z-index: 1;
+	li a,
+	li strong {
+		color: @body-color;
+		padding: 0 3px 3px;
+	}
+	li a {
+		display: block;
+		overflow: hidden;
+        text-overflow: ellipsis;
+		.transition;
+		white-space: nowrap;
+		&:hover {
+			background-color: @header-light;
+			color: #fff;
+		}
+	}
+	&:before {
+		border: 11px solid transparent; /* tip height + border width*/
+		border-bottom-color: #fff;
+		content:"\00a0";
+		display: block;
+		height: 0;
+		left: 50%;
+		margin-left: -11px;
+		position: absolute;
+		top: -22px; /* value = - border-top-width - border-bottom-width */
+		width: 0;
+	}
+}
+
+/* -----------------------------------------
    Sign In Mobile
 ----------------------------------------- */
 
@@ -292,7 +344,7 @@ a.notifications {
 ----------------------------------------- */
 
 #Posts:hover div.content:not(:hover) {
-	opacity: 0.4;
+	opacity: 0.5;
 }
 
 section h1 {
@@ -401,6 +453,31 @@ article {
 			width: 90%;	
 		}
 	}
+}
+
+/* -----------------------------------------
+   Playlist
+----------------------------------------- */
+
+.Playlist {
+	.player-wrapper {
+		height: 420px;
+	}
+	.video-list {
+	a {
+		display: block;
+		padding: 4px 2px;
+		.transition;
+		&.current {
+			background: @header-color;
+			color: @font-color;
+		}
+		&:hover {
+			background-color: @header-light;
+			color: @font-color;
+		}
+	}
+}
 }
 
 /* -----------------------------------------

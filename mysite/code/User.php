@@ -5,16 +5,17 @@ class User_Controller extends Share_controller {
 	public static $allowed_actions = array (
 		'edit',
 		'likes',
-		'notifications'
+		'notifications',
+		'playlist'
 	);
 	
 	public function init() {
 		parent::init();
 	}
-		
+	
 	public function edit() {	
 		if ( ! $member = MyMember::get()->filter('ID', Member::currentUserID())->First()) {
-			//parent::redirect('/');
+			//$this->redirect('/');
 			die('could\'t find member');
 		}
 		
@@ -45,15 +46,38 @@ class User_Controller extends Share_controller {
 		)); 
 	}
 	
+	private function getLikes() {
+		return Post::get()
+		       ->leftJoin('Like', 'Like.MemberID = ' . Member::currentUserID() . ' AND Like.PostID = Post.ID')
+		       ->where('Like.MemberID > 0')
+		       ->sort('Post.Created', 'DESC');
+	}
+	
 	public function likes() {
-		$posts = Post::get()
-		         ->leftJoin('Like', 'Like.MemberID = ' . Member::currentUserID() . ' AND Like.PostID = Post.ID')
-		         ->where('Like.MemberID > 0')
-		         ->sort('Post.Created', 'DESC');
+		if ( ! Member::currentUserID()) {
+			$this->redirect('/Security/login?BackURL=/user/likes');
+		}
+		
+		$posts = $this->getLikes();
 		
 		return $this->renderWith(array('Page', 'Share'), array(
 			'LikesPage' => true,
 			'Posts' => $posts
+		));
+	}
+	
+	public function playlist() {
+		if ( ! Member::currentUserID()) {
+			$this->redirect('/Security/login?BackURL=/user/playlist');
+		}
+		
+		Requirements::javascript('themes/' . SSViewer::current_theme() . '/javascript/playlist.js');
+		
+		// get likes by MemberID and remove posts not having a YouTubeID
+		$likes = $this->getLikes()->exclude('YouTubeID', '');		
+		
+		return $this->renderWith(array('Page', 'Playlist'), array(
+			'Likes' => $likes
 		));
 	}
 

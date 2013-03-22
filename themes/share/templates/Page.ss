@@ -16,9 +16,10 @@
 	            <h1><a href="/">share</a></h1>
 	        </div>
 	        <div class="column large-4 hide-on-mobile search-form">
-	            <form action="{$BaseURL}share/automplete/">
-	                <input type="search" class="large-12" placeholder="search for title or genre"<% if SearchTerm %> value="$SearchTerm"<% end_if %>>
+	            <form action="{$BaseURL}share/search/">
+	                <input type="search" name="search" class="large-12" placeholder="search for title or genre"<% if SearchTerm %> value="$SearchTerm"<% end_if %>>
                 </form>
+				<div class="autocomplete-holder large-12"></div>
 	        </div>
 	        <div class="column hide-on-mobile large-3 large-offset-1">
 				<div class="menue">
@@ -51,11 +52,9 @@
 					<li>
 						<a href="/user/likes"><%t Title.likes "your likes" %></a>
 					</li>
-					<!--
 					<li>
-						<a href="/user/edit">edit profile</a>
+						<a href="/user/playlist"><%t Title.playlist "your playlist" %></a>
 					</li>
-					-->
 					<% end_if %>
 					<li>
 						<a href="/page/get/about"><%t Menu.About "about share" %></a>

@@ -10,6 +10,9 @@ $(document).ready(function  () {
 			}
 			return false;
 		});
+		
+		// init autocomplete
+		AutoComplete.init(jQuery('div.search-form input[type=search]'), jQuery('div.autocomplete-holder'));
 	}
 	
 	if (jQuery('form input[type=submit]')) {
@@ -167,5 +170,3 @@ var userMenue = {
 	}
 	
 };
-
-$(document).foundation();

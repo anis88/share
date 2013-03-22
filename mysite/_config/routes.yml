@@ -11,4 +11,5 @@ Director:
     'user/$Action!': 'User_Controller'
     'share/$Action!/$ID': 'Share_Controller'
     'view/$Action!/$ID!': 'Share_Controller'
+    'autocomplete': 'Autocomplete_Controller'
     '': 'Share_Controller'

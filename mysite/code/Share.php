@@ -2,12 +2,13 @@
 
 class Share_Controller extends Controller {
 
+	private $js_folder;
 	private $per_page;
 
 	public static $allowed_actions = array (
-		'autocomplete',
 		'bygenre',
 		'comment',
+		'getPostInfo',
 		'like',
 		'likes',
 		'newpost',
@@ -37,19 +38,16 @@ class Share_Controller extends Controller {
 		Requirements::css($css_folder . 'app.less', 'screen', BASE_PATH);
 		
 		// include js
-		$js_folder = $theme_folder . '/javascript/';
+		$this->js_folder = $theme_folder . '/javascript/';
 		
 		$js_array = array(
-			$js_folder . 'third-party/jquery-1.9.1.min.js',
-			$js_folder . 'third-party/foundation/vendor/zepto.js',
-			$js_folder . 'third-party/foundation/vendor/custom.modernizr.js',
-			$js_folder . 'third-party/foundation/foundation.min.js',
-			$js_folder . 'third-party/foundation/foundation/foundation.forms.js',
-			$js_folder . 'init.js',
-			$js_folder . 'soundcloud.js'
+			'third-party/jquery-1.9.1.min.js',
+			'autocomplete.js',
+			'init.js',
+			'soundcloud.js'
 		);
-		foreach ($js_array as $js) {
-			Requirements::javascript($js);
+		foreach ($js_array as $file) {
+			Requirements::javascript($this->js_folder . $file);
 		}
 		Requirements::combine_files('scripts.js', $js_array);
 		
@@ -70,24 +68,6 @@ class Share_Controller extends Controller {
 		return $this->renderWith(array('Page', 'Share'), array(
 			'Posts' => $list
 		));
-	}
-	
-	public function autocomplete() {
-		$params = $this->getURLParams();
-		$search_term = $params['ID'];
-		
-		$posts = Genre::get()->filter(array(
-			'Title:PartialMatch' => $search_term
-		));
-		
-		$posts = Post::get()->filter(array(
-			'Title:PartialMatch' => $search_term
-		));
-		
-		return $this->renderWith(array('Autocomplete'), array(
-			'Genre' => $genre,
-			'Posts' => $posts,
-		)); 
 	}
 	
 	public function bygenre() {
@@ -138,6 +118,37 @@ class Share_Controller extends Controller {
 		return 'http://www.gravatar.com/avatar/' . md5(strtolower(trim(Member::CurrentUser()->Email))) . '?s=' . $size;
 	}
 	
+	public function getPostInfo() {
+		$params = $this->getURLParams();
+		$id = (int)$params['ID'];
+		
+		if ($id == 0) {
+			die('invalid ID');
+		}
+		
+		$post = Post::get()->byID($id);
+		
+		$date_array = explode(' ', $post->Created);
+		$date_array = explode('-', $date_array[0]);
+		$date_array[0] = substr($date_array[0], 2);
+		$date_array = array_reverse($date_array);
+		
+		$body = array(
+			'Created' => implode('/', $date_array),
+			'Genre' => $post->Genre()->Title,
+			'GenreID' => $post->GenreID,
+			'Member' => $post->Member()->FirstName,
+			'MemberID' => $post->MemberID,
+			'Text' => $post->Content,
+			'Title' => $post->Title
+		);
+		
+		$response = new SS_HTTPResponse(); 
+		$response->addHeader("Content-type", "application/json");
+		$response->setBody(json_encode($body));
+		$response->output();
+	}
+	
 	public function like() {
 		$params = $this->getURLParams();
 		$id = (int)$params['ID'];
@@ -174,6 +185,20 @@ class Share_Controller extends Controller {
 	public function newpost() {
 		if ( ! Member::currentUserID()) $this->redirect('/');
 		
+		$js_files = array(
+			'third-party/foundation/vendor/zepto.js',
+			'third-party/foundation/vendor/custom.modernizr.js',
+			'third-party/foundation/foundation.min.js',
+			'third-party/foundation/foundation/foundation.forms.js'
+		);
+		foreach ($js_files as $file) {
+			Requirements::javascript($this->js_folder . $file);
+		}
+
+		Requirements::customScript(<<<JS
+$(document).foundation();
+JS
+);
 		$genres = Genre::get();
 		
 		return $this->renderWith(array('Page', 'NewPost'), array(

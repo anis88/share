@@ -1,6 +1,6 @@
 <% if LikesPage || SearchTerm || UserName || Genre %>
 	<section class="row">
-		<div class="columns large-12">
+		<div class="columns large-6">
 			<% if UserName %>
 				<h1><%t Title.usershares "All shares from  {username}" username=$UserName %></h1>
 			<% else_if SearchTerm %>
@@ -11,9 +11,19 @@
 				<h1><%t Title.genre "All posts in {genre}" genre=$Genre %></h1>
 			<% end_if %>
 		</div>
+		
+		<% if CurrentMember && LikesPage %>
+			<section class="columns large-6">
+				<div class="alert-box">
+					<h6>Playlist</h6>
+					<p>Play your likes from youtube in a playlist <a href="/user/playlist">click here</a></p>
+				</div>
+			</section>
+		<% end_if %>
+		
 	</section>
 <% end_if %>
-	
+
 <section id="Posts" class="row">
 
 	<% if Posts %>
