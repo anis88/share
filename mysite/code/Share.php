@@ -65,7 +65,7 @@ class Share_Controller extends Controller {
 		$list = new PaginatedList($posts, $this->request);
 		$list->setPageLength(12);
 		
-		return $this->renderWith(array('Page', 'Share'), array(
+		return $this->renderWith(array('Share', 'Page'), array(
 			'Posts' => $list
 		));
 	}
@@ -80,7 +80,7 @@ class Share_Controller extends Controller {
 		
 		$posts = Post::get()->filter('GenreID', $genre_id)->sort('Created', 'DESC');
 		
-		return $this->renderWith(array('Page', 'Share'), array(
+		return $this->renderWith(array('Share', 'Page'), array(
 			'Posts' => $posts,
 			'Genre' => $genre->Title
 		));
@@ -196,12 +196,14 @@ class Share_Controller extends Controller {
 		}
 
 		Requirements::customScript(<<<JS
+if( ! /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
 $(document).foundation();
+}
 JS
 );
 		$genres = Genre::get();
 		
-		return $this->renderWith(array('Page', 'NewPost'), array(
+		return $this->renderWith(array('NewPost', 'Page'), array(
 			'Genres' => $genres
 		));
 	}
@@ -276,7 +278,7 @@ JS
 			'Title:PartialMatch' => $search_term
 		));
 		
-		return $this->renderWith(array('Page', 'Share'), array(
+		return $this->renderWith(array('Share', 'Page'), array(
 			'Posts' => $posts,
 			'SearchTerm' => $search_term
 		)); 
@@ -308,7 +310,7 @@ JS
 			$posts = false;
 		}
 		
-		return $this->renderWith(array('Page', 'Share'), array(
+		return $this->renderWith(array('Share', 'Page'), array(
 			'Posts' => $posts,
 			'UserName' => $username
 		)); 
