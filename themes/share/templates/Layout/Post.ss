@@ -52,18 +52,6 @@
 			</p>
 		<% end_if %>
 		
-		<!-- Toggle output in Config -->
-		<% if Post.hasYouTubeID %>
-			<% if Post.Member.Locale="de_DE" %><% else %>
-				<% if CurrentMember.Locale="de_DE" %>
-					<div class="alert-box hide-on-mobile">
-						<h6>Du siehst nichts?</h6>
-						<p>Kopiere den YouTube Link (entferne alle GET-Parameter außer ?v=[YouTubeID]) und füge ihn auf <a href="http://www.hidemyass.com/youtube-proxy/" class="new-window">Hide My Ass!</a> ein.</p>
-					</div>
-				<% end_if %>
-			<% end_if %>
-		<% end_if %>
-		
 		<% if Post.hasLiked %>
 			<a href="/post/unlike/$Post.ID" class="button like xhr">Unlike</a>
 		<% else %>
