@@ -8,6 +8,7 @@ de:
     You: Dir
     nocomments: 'Dieser Post wurde noch nicht kommentiert'
   Form:
+    CommentPlaceholder: 'schreibe einen Kommentar'
     Description: Beschreibung
     Genre: Genre
     Link: 'YouTube, Soundcloud oder Vimeo Link'

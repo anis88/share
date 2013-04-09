@@ -8,6 +8,7 @@ en:
     You: You
     nocomments: 'Nobody commented on this post yet'
   Form:
+    CommentPlaceholder: 'write a comment'
     Description: Description
     Genre: Genre
     Link: 'YouTube, Soundcloud or Vimeo Link'

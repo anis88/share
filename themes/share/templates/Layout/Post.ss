@@ -97,7 +97,7 @@
 		<div class="columns large-12">
 			<form action="/share/comment/$Post.ID">
 				<img src="$getGravatarImageForCurrentMember(30)">
-				<input type="text" name="Text" placeholder="write a comment ..." required></textarea>
+				<input type="text" name="Text" placeholder="<%t Form.CommentPlaceholder "write a comment" %> ..." required></textarea>
 				<input type="submit" value="save comment" class="button mobile-only">
 			</form>
 		</div>
