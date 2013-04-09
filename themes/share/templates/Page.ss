@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width">
 	<meta name="robots" content="noindex, nofollow">
 	<link rel="icon" type="image/png" href="/themes/share/images/share-logo.png">
+	<link rel="apple-touch-icon" href="/themes/share/images/share-logo-129.png">
 </head>
 <body>
 	
