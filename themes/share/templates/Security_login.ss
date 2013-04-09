@@ -14,7 +14,7 @@
 	<header>
 		<div class="row">
 	        <div class="column large-12">
-				<h1>login</h1>
+				<h1><a href="/">login</a></h1>
 			</div>
 		</div>
 	</header>

@@ -1,9 +1,7 @@
 $(document).ready(function  () {
-
-	var searchForm = jQuery('.search-form form');
 	
-	if (searchForm) {
-		searchForm.submit(function () {
+	if (jQuery('.search-form form')[0]) {
+		jQuery('.search-form form').submit(function () {
 			var value = jQuery('input[type=search]',this).val();
 			if (value !== '') {
 				window.location.href = searchForm.attr('action') + value;
