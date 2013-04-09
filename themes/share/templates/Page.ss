@@ -2,7 +2,7 @@
 <html lang="$ContentLocale">
 <head>
 	<meta charset="UTF-8">
-	<title>share</title>
+	<title><% if getTitle %>$getTitle :: <% end_if %>share</title>
 	<meta name="viewport" content="width=device-width">
 	<meta name="robots" content="noindex, nofollow">
 	<link rel="icon" type="image/png" href="/themes/share/images/share-logo.png">

@@ -60,7 +60,7 @@ class User_Controller extends Share_controller {
 		
 		$posts = $this->getLikes();
 		
-		return $this->renderWith(array('Page', 'Share'), array(
+		return $this->renderWith(array('Share', 'Page'), array(
 			'LikesPage' => true,
 			'Posts' => $posts
 		));

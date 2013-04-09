@@ -70,7 +70,7 @@ var AutoComplete = {
 		// could be more elegant by using child keys :S
 		
 		var groups = ['Posts', 'Genre'];
-		var actions = ['post', 'bygenre']
+		var actions = ['getpost', 'bygenre']
 		
 		for (var o = 0; o < groups.length; o++) {
 			var result = this.json_response.data[groups[o]];

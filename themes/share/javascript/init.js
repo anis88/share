@@ -111,7 +111,7 @@ $(document).ready(function  () {
 				dataType: 'json',
 				success: function (data) {
 					if (data.success) {					
-						window.location = 'http://' + window.location.hostname + '/share/post/' + data.success.ID;
+						window.location = 'http://' + window.location.hostname + '/share/getpost/' + data.success.ID;
 					} else {
 						alert('An error occured :(');
 					}

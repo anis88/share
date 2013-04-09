@@ -4,16 +4,16 @@ class Share_Controller extends Controller {
 
 	private $js_folder;
 	private $per_page;
+	private $post;
 
 	public static $allowed_actions = array (
 		'bygenre',
 		'comment',
+		'getpost',
 		'getPostInfo',
 		'like',
 		'likes',
 		'newpost',
-		'page',
-		'post',
 		'savepost',
 		'search',
 		'unlike',
@@ -103,19 +103,38 @@ class Share_Controller extends Controller {
 		$comment->MemberID = Member::currentUserID();
 		$comment->write();
 		
-		header('Content-type: application/json');
-		echo json_encode(array(
+		$body = array(
 			'Comment' => array(
 				'Content' => $comment->Content,
 				'Image' => $this->getGravatarImageForCurrentMember(60),
 				'Member' => $comment->Member()->FirstName,
 				'Created' => 'just now'
 			)
-		));
+		);
+		$response = new SS_HTTPResponse(); 
+		$response->addHeader("Content-type", "application/json");
+		$response->setBody(json_encode($body));
+		$response->output();
 	}
 	
 	public function getGravatarImageForCurrentMember($size = 40) {
 		return 'http://www.gravatar.com/avatar/' . md5(strtolower(trim(Member::CurrentUser()->Email))) . '?s=' . $size;
+	}
+	
+	public function getPost() {
+		$params = $this->getURLParams();
+		$id = (int)$params['ID'];
+		
+		$this->post = Post::get()->filter('ID', $id)->First();
+		
+		if ($this->post) {
+			return $this->renderWith(array('Page', 'Post'), array(
+				'Post' => $this->post,
+				'SoundcloudClientID' => defined('SOUNDCLOUD_CLIENT_ID') ? SOUNDCLOUD_CLIENT_ID : false
+			));
+		} else {
+			$this->redirect('/');
+		}
 	}
 	
 	public function getPostInfo() {
@@ -147,6 +166,14 @@ class Share_Controller extends Controller {
 		$response->addHeader("Content-type", "application/json");
 		$response->setBody(json_encode($body));
 		$response->output();
+	}
+	
+	public function getTitle() {
+		if ($this->post) {
+			return $this->post->Title;
+		}
+		
+		return false;
 	}
 	
 	public function like() {
@@ -223,22 +250,6 @@ JS
 			array("</p>\n<p>", "</p>\n<p>", '$1<br'.($xml == true ? ' /' : '').'>$2'),
 		
 			trim($string)).'</p>';
-		}
-	}
-	
-	public function post() {
-		$params = $this->getURLParams();
-		$id = (int)$params['ID'];
-		
-		$post = Post::get()->filter('ID', $id)->First();
-		
-		if ($post) {
-			return $this->renderWith(array('Page', 'Post'), array(
-				'Post' => $post,
-				'SoundcloudClientID' => defined('SOUNDCLOUD_CLIENT_ID') ? SOUNDCLOUD_CLIENT_ID : false
-			));
-		} else {
-			$this->redirect('/');
 		}
 	}
 	
