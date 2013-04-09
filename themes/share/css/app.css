@@ -346,6 +346,19 @@ article:hover p.genre {
 .comments form input[type=text] {
   width: 90%;
 }
+.member-list .row {
+  margin: 0 0 10px;
+}
+.member-list h4 {
+  margin: 0 0 5px;
+}
+.member-list p {
+  margin: 0;
+}
+.member-list .user-color {
+  height: 70px;
+  width: 100%;
+}
 .Playlist .player-wrapper {
   height: 420px;
 }
