@@ -9,19 +9,10 @@ See [doc.silverstripe.org](http://doc.silverstripe.org/framework/en/installation
 ...
 
 ## TODOs and upcoming features ##
-
-### version 0.2 ###
-
- * installation guide
- * pagination
- * post from frontend
- * filter by genre
- * embed soundcloud links
- * change locale on demand or get it from member settings
  
 ### planned ###
 
- * set page titles
+ * set all page titles
  * notifications (likes)
  * group member names if a post has many likes (>5)
  * frontend profile page
@@ -30,6 +21,20 @@ See [doc.silverstripe.org](http://doc.silverstripe.org/framework/en/installation
  * periodical check for new posts, with notification in title
 
 ## Changelog ##
+
+### Version 0.2 ###
+ * playlist for liked song on youtube
+ * automated member listing
+
+### Version 0.2 ###
+
+ * pagination
+ * post from he front end
+ * autocomplete for title and genre in search
+ * genre is display on hover
+ * soundcloud and vimeo integration
+ * page titles for post pages
+ * comment on posts
 
 ### Version 0.1 ###
 
