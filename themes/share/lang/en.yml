@@ -23,6 +23,7 @@ en:
     genre: 'All posts in {genre}'
     likes: 'your likes'
     newpost: 'add a post'
+    playlist: 'your playlist'
     results: '{resultcount} results for {searchterm}'
     usershares: 'All shares from  {username}'
     yourlikes: 'Your Likes'
