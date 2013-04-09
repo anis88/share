@@ -117,6 +117,10 @@ class Share_Controller extends Controller {
 		$response->output();
 	}
 	
+	public function CurrentURL() {
+		return $this->request->getURL();
+	}
+	
 	public function getGravatarImageForCurrentMember($size = 40) {
 		return 'http://www.gravatar.com/avatar/' . md5(strtolower(trim(Member::CurrentUser()->Email))) . '?s=' . $size;
 	}

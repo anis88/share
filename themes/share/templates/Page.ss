@@ -29,7 +29,7 @@
 						<a href="#" class="notification-count" title="Hier kommen die Benachrichtungen">(3)</a>
 						-->
 					<% else %>
-						<a href="/Security/login?BackURL=/" class="sign-in"><%t Menu.SignIn "sign in" %></a>
+						<a href="/Security/login?BackURL=/{$CurrentURL}" class="sign-in"><%t Menu.SignIn "sign in" %></a>
 					<% end_if %>
 				</div>
 	        </div>
@@ -46,24 +46,24 @@
 						<a href="/admin" class="new-window">admin</a>
 					</li>
 					<% if CurrentMember %>
-					<li>
-						<a href="/share/newpost"><%t Title.newpost "add a post" %></a>
-					</li>
-					<li>
-						<a href="/user/likes"><%t Title.likes "your likes" %></a>
-					</li>
-					<li>
-						<a href="/user/playlist"><%t Title.playlist "your playlist" %></a>
-					</li>
+						<li>
+							<a href="/share/newpost"><%t Title.newpost "add a post" %></a>
+						</li>
+						<li>
+							<a href="/user/likes"><%t Title.likes "your likes" %></a>
+						</li>
+						<li>
+							<a href="/user/playlist"><%t Title.playlist "your playlist" %></a>
+						</li>
 					<% end_if %>
 					<li>
 						<a href="/page/get/about"><%t Menu.About "about share" %></a>
 					</li>
 					<li>
 						<% if CurrentMember %>
-							<a href="/Security/logout?BackURL=/"><%t Menu.SignOut "sign out" %></a>
+							<a href="/Security/logout?BackURL=/{$CurrentURL}"><%t Menu.SignOut "sign out" %></a>
 						<% else %>
-							<a href="/Security/login?BackURL=/" class="sign-in"><%t Menu.SignIn "sign in" %></a>
+							<a href="/Security/login?BackURL=/{$CurrentURL}" class="sign-in"><%t Menu.SignIn "sign in" %></a>
 						<% end_if %>
 					</li>
 				</ul>
@@ -71,7 +71,7 @@
 		</div>
 		
 	</header>
-
+	
 	$Layout
 	
 </body>

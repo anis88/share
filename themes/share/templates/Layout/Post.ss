@@ -55,7 +55,7 @@
 		<% if Post.hasLiked %>
 			<a href="/post/unlike/$Post.ID" class="button like xhr">Unlike</a>
 		<% else %>
-			<a href="<% if CurrentMember %>/post/like/$Post.ID<% else %>/Security/login?BackURL=/view/post/$Post.ID<% end_if %>" class="button like<% if CurrentMember %> xhr<% end_if %>">Like</a>				
+			<a href="<% if CurrentMember %>/post/like/$Post.ID<% else %>/Security/login?BackURL={$CurrentURL}<% end_if %>" class="button like<% if CurrentMember %> xhr<% end_if %>">Like</a>				
 		<% end_if %>
 		
 		<% if Post.File %>
