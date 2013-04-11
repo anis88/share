@@ -18,7 +18,7 @@ $(document).ready(function  () {
 	}
 	
 	// target blank
-	jQuery('a.new-window').each(function () {
+	jQuery('a.new-window,a[rel=external]').each(function () {
 		$(this).click(function () {
 			window.open($(this).attr('href'));
 			return false;
