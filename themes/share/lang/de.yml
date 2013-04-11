@@ -18,9 +18,12 @@ de:
     About: 'über share'
     SignIn: 'anmelden'
     SignOut: 'abmelden'
+  Text:
+    NoLikes: 'Klicke in Posts mit Youtube-Videos auf like um Lieder zu Deiner Playlist hinzuzufügen.'
   Title:
     Comments: Kommentare
     Newpost: 'Neuer Post'
+    NoLikes: 'Deine Playlist ist noch leer'
     genre: 'Alle Posts in {genre}'
     likes: 'Deine Likes'
     newpost: 'Neuer Post'

@@ -77,7 +77,8 @@ class User_Controller extends Share_controller {
 		$likes = $this->getLikes()->exclude('YouTubeID', '');		
 		
 		return $this->renderWith(array('Page', 'Playlist'), array(
-			'Likes' => $likes
+			'Likes' => $likes,
+			'NoLikes'  => $likes->Count() == 0
 		));
 	}
 

@@ -18,9 +18,12 @@ en:
     About: 'about share'
     SignIn: 'sign in'
     SignOut: 'sign out'
+  Text:
+    NoLikes: 'Click on like in posts with a Youtube video to add songs to your playlist.'
   Title:
     Comments: Comments
     Newpost: 'Add Post'
+    NoLikes: 'Your playlist is still empty'
     genre: 'All posts in {genre}'
     likes: 'your likes'
     newpost: 'add a post'
