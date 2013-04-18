@@ -338,17 +338,17 @@ article:hover p.genre {
 .post .button {
   margin-bottom: 10px;
 }
-.comments img {
+#Comments img {
   float: left;
   padding: 0 20px 20px 0;
 }
-.comments p {
+#Comments p {
   margin-bottom: 5px;
 }
-.comments form img {
+#Comments form img {
   padding: 0 10px 0 0;
 }
-.comments form input[type=text] {
+#Comments form input[type=text] {
   width: 90%;
 }
 .member-list .row {
@@ -380,6 +380,24 @@ article:hover p.genre {
   color: #fff;
 }
 .Playlist .video-list a:hover {
+  background-color: #7ecbdd;
+  color: #fff;
+}
+aside ul {
+  margin: 0;
+}
+aside ul li {
+  list-style: none;
+}
+aside ul a {
+  display: block;
+  padding: 4px 2px;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+aside ul a:hover {
   background-color: #7ecbdd;
   color: #fff;
 }

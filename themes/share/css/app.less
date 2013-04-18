@@ -14,6 +14,7 @@
 :: Comments
 :: Content
 :: Playlist
+:: Sidebar
 :: Mobile Styles
 */
 
@@ -445,7 +446,7 @@ article {
    Comments
 ----------------------------------------- */
 
-.comments {
+#Comments {
 	img {
 		float: left;
 		padding: 0 20px 20px 0;
@@ -492,20 +493,42 @@ article {
 		height: 420px;
 	}
 	.video-list {
-	a {
-		display: block;
-		padding: 4px 2px;
-		.transition;
-		&.current {
-			background: @header-color;
-			color: @font-color;
-		}
-		&:hover {
-			background-color: @header-light;
-			color: @font-color;
+		a {
+			display: block;
+			padding: 4px 2px;
+			.transition;
+			&.current {
+				background: @header-color;
+				color: @font-color;
+			}
+			&:hover {
+				background-color: @header-light;
+				color: @font-color;
+			}
 		}
 	}
 }
+
+/* -----------------------------------------
+   Sidebar
+----------------------------------------- */
+
+aside {
+	ul {
+		margin: 0;
+		li {
+			list-style: none;
+		}
+		a {
+			display: block;
+			padding: 4px 2px;
+			.transition;
+			&:hover {
+				background-color: @header-light;
+				color: @font-color;
+			}
+		}
+	}
 }
 
 /* -----------------------------------------
