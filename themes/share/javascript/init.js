@@ -52,7 +52,7 @@ $(document).ready(function  () {
 	
 	// links in post content
 	jQuery('.post-content a').each(function () {
-		$(this).click(function () {
+		jQuery(this).click(function () {
 			window.open($(this).attr('href'));
 			return false;
 		});
@@ -61,7 +61,7 @@ $(document).ready(function  () {
 	// new comment
 	if (jQuery('#Comments')) {
 		jQuery('#Comments form').submit(function () {
-			$.ajax({
+			jQuery.ajax({
 				data: $(this).serialize(),
 				dataType: 'json',
 				success: function (data) {
@@ -72,9 +72,11 @@ $(document).ready(function  () {
 						jQuery('#Comments form input[type=text]').val('');
 						
 						var div = jQuery('<div/>').addClass('columns twelve');
+						
 						jQuery('<img/>', {
 							src: data.Comment.Image
 						}).appendTo(div);
+						
 						var p = jQuery('<p/>').appendTo(div);
 						jQuery('<a/>', {
 							href: '/share/user/' + data.Comment.Member,
@@ -86,13 +88,13 @@ $(document).ready(function  () {
 						jQuery('<div/>', {
 							html: data.Comment.Content
 						}).appendTo(div);
-						jQuery('div.comments').append(div);
+						jQuery('.comments').append(div);
 					} else {
 						alert('An error occured :(');
 					}
 				},
 				type: 'post',
-				url: $(this).attr('action')
+				url: jQuery(this).attr('action')
 			});
 			
 			return false;

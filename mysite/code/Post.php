@@ -7,7 +7,7 @@ class Post extends DataObject {
     static $db = array(
 		'Content' => 'HTMLText',
 		'Title' => 'Varchar(100)',
-		'Link' => 'Varchar(100)',
+		'Link' => 'Varchar(250)',
 		'VimeoID' => 'Varchar(20)',
 		'YouTubeID' => 'Varchar(20)'
     );
@@ -68,12 +68,18 @@ class Post extends DataObject {
 	}
 	
 	public function getLikes() {
-		$likes = Member::get()
-		         ->leftJoin('Like', 'Like.MemberID = Member.ID')
-		         ->where('Like.PostID = ' . $this->ID)
-		         ->exclude('ID', Member::currentUserID());
-		
-		return $likes;
+		return Member::get()
+		       ->leftJoin('Like', 'Like.MemberID = Member.ID')
+		       ->where('Like.PostID = ' . $this->ID)
+		       ->exclude('ID', Member::currentUserID());
+	}
+	
+	public function getPostsInGenre() {
+		return Post::get()
+		       ->filter('GenreID', $this->GenreID)
+		       ->exclude('ID', $this->ID)
+		       ->limit(5)
+		       ->sort('RAND()');
 	}
 	
 	public function getVimeoID() {

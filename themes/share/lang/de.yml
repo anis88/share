@@ -22,6 +22,7 @@ de:
     NoLikes: 'Klicke in Posts mit Youtube-Videos auf like um Lieder zu Deiner Playlist hinzuzufügen.'
   Title:
     Comments: Kommentare
+    MoreInGenre: 'Weitere Posts in {genre}'
     Newpost: 'Neuer Post'
     NoLikes: 'Deine Playlist ist noch leer'
     genre: 'Alle Posts in {genre}'

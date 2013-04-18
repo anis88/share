@@ -1,6 +1,6 @@
 <section class="post row">
 	
-	<section class="columns large-12">
+	<section class="columns large-9">
 		
 		<h1>$Post.Title</h1>
 		
@@ -23,7 +23,7 @@
 		
 		<% if $SoundcloudClientID && Post.hasSoundcloudLink %>
 			<div id="SoundcloudPlayer"></div>
-			<script src="http://connect.soundcloud.com/sdk.js"></script>
+			<script src="//connect.soundcloud.com/sdk.js""></script>
 			<script>					
 				embedSoundcloud('$SoundcloudClientID', '$Post.Link');
 			</script>
@@ -67,40 +67,53 @@
 			<a href="/download/file/$Post.File.ID" class="button download">Download</a>
 		<% end_if %>
 		
+		<div id="Comments" class="row">
+		
+			<div class="columns large-12">
+				<h3><%t Title.Comments "Comments" %></h3>
+			</div>
+			
+			<div class="comments">
+				<% if Post.Comments %>
+					<% loop Post.Comments %>
+						<div class="columns large-12">
+							<img src="$getGravatarImage(60)" title="Gravatar - A Globally Recognized Avatar">
+							<p><a href="/share/user/$Member.FirstName">$Member.FirstName</a> $Created.Ago</p>
+							$Content
+						</div>
+					<% end_loop %>
+				<% else %>
+					<div class="columns large-12 no-comments">
+						<p><%t Content.nocomments "Nobody commented on this post yet" %></p>
+					</div>
+				<% end_if %>
+			</div>
+			
+			<% if CurrentMember %>
+				<div class="columns large-12">
+					<form action="/share/comment/$Post.ID">
+						<img src="$getGravatarImageForCurrentMember(30)">
+						<input type="text" name="Text" placeholder="<%t Form.CommentPlaceholder "write a comment" %> ..." required></textarea>
+						<input type="submit" value="save comment" class="button mobile-only small">
+					</form>
+				</div>
+			<% end_if %>
+			
+		</div>
+	
 	</section>
 	
-</section>
-
-<section id="Comments" class="comments row">
-
-	<div class="columns large-12">
-		<h3><%t Title.Comments "Comments" %></h3>
-	</div>
-	
-	<div class="comments">
-		<% if Post.Comments %>
-			<% loop Post.Comments %>
-				<div class="columns large-12">
-					<img src="$getGravatarImage(60)" title="Gravatar - A Globally Recognized Avatar">
-					<p><a href="/share/user/$Member.FirstName">$Member.FirstName</a> $Created.Ago</p>
-					$Content
-				</div>
-			<% end_loop %>
-		<% else %>
-			<div class="columns large-12 no-comments">
-				<p><%t Content.nocomments "Nobody commented on this post yet" %></p>
-			</div>
+	<aside class="columns large-3">
+		<% if Post.getPostsInGenre %>
+			<h4><%t Title.MoreInGenre "More posts in {genre}" genre=$Post.Genre.Title %></h4>
+			<ul>
+				<% loop Post.getPostsInGenre %>
+					<li>
+						<a href="/view/getpost/$ID">$Title</a>
+					</li>
+				<% end_loop %>
+			</ul>
 		<% end_if %>
-	</div>
-	
-	<% if CurrentMember %>
-		<div class="columns large-12">
-			<form action="/share/comment/$Post.ID">
-				<img src="$getGravatarImageForCurrentMember(30)">
-				<input type="text" name="Text" placeholder="<%t Form.CommentPlaceholder "write a comment" %> ..." required></textarea>
-				<input type="submit" value="save comment" class="button mobile-only">
-			</form>
-		</div>
-	<% end_if %>
+	</aside>
 	
 </section>

@@ -22,6 +22,7 @@ en:
     NoLikes: 'Click on like in posts with a Youtube video to add songs to your playlist.'
   Title:
     Comments: Comments
+    MoreInGenre: 'More posts in {genre}'
     Newpost: 'Add Post'
     NoLikes: 'Your playlist is still empty'
     genre: 'All posts in {genre}'
