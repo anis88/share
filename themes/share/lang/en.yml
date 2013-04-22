@@ -11,7 +11,7 @@ en:
     CommentPlaceholder: 'write a comment'
     Description: Description
     Genre: Genre
-    Link: 'YouTube, Soundcloud or Vimeo Link'
+    Link: 'YouTube, Soundcloud, Vimeo or Dailymotion Link'
     Submit: save
     Title: Title
   Menu:

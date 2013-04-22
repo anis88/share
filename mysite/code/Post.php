@@ -6,6 +6,7 @@ class Post extends DataObject {
 
     static $db = array(
 		'Content' => 'HTMLText',
+		'DailyMotionID' => 'Varchar(30)',
 		'Title' => 'Varchar(100)',
 		'Link' => 'Varchar(250)',
 		'VimeoID' => 'Varchar(20)',
@@ -63,8 +64,17 @@ class Post extends DataObject {
 			new DropdownField('GenreID', 'Genre', $dropdown_values, 0, null, '-- select genre --'),
 			// adjust the max upload size to your server settings
 			new UploadField('File', 'File (max. 16MB)'),
-			new TextField('Link', 'Youtube, Soundcloud or Vimeo Link')
+			new TextField('Link', 'Youtube, Soundcloud, Vimeo or Dailymotion Link')
 		);
+	}
+
+	public function getDailyMotionID() {
+		$elements = explode('/', $this->Link);
+		$id_raw = explode('_', end($elements));
+		if (is_array($id_raw)) {
+			return $id_raw[0];
+		}
+		return false;
 	}
 	
 	public function getLikes() {
@@ -114,6 +124,10 @@ class Post extends DataObject {
 		))->First();
 	}
 	
+	public function hasDailyMotionID() {
+		return strrpos($this->Link, 'dailymotion');
+	}
+	
 	public function hasSoundcloudLink() {
 		return strrpos($this->Link, 'soundcloud.com');
 	}
@@ -132,12 +146,16 @@ class Post extends DataObject {
 			$this->MemberID = Member::currentUserID();
 		}
 		// stores extracted vimeo id if available
-		if ($this->getVimeoID()) {
+		if (preg_match('/vimeo/', $this->Link)) {
 			$this->VimeoID = $this->getVimeoID();
 		}
 		// stores extracted youtube id if available
-		if ($this->getYouTubeID()) {
+		elseif (preg_match('/youtu(.)?be/', $this->Link)) {
 			$this->YouTubeID = $this->getYouTubeID();
+		}
+		// stores extracted Dailymotion ID if available
+		elseif (preg_match('/dailymotion/', $this->Link)) {
+			$this->DailyMotionID = $this->getDailyMotionID();
 		}
 		
 		parent::onBeforeWrite();

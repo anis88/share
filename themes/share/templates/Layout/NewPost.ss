@@ -23,7 +23,7 @@
 				<% end_loop %>
 			</select>
 			
-			<label for="Link"><%t Form.Link "YouTube, Soundcloud or Vimeo Link" %></label>
+			<label for="Link"><%t Form.Link "YouTube, Soundcloud, Vimeo or Dailymotion Link" %></label>
 			<input type="text" name="Link" id="Link" required>
 			
 			<input type="submit" class="button" value="<%t Form.Submit "save" %>">

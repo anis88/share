@@ -13,6 +13,10 @@
 			$Post.Content
 		</section>
 		
+		<% if Post.hasDailyMotionID %>
+			<iframe src="http://www.dailymotion.com/embed/video/$Post.DailyMotionID" width="560" height="315" frameborder="0"></iframe>
+		<% end_if %>
+		
 		<% if Post.hasVimeoID %>
 			<iframe src="http://player.vimeo.com/video/$Post.VimeoID" width="560" height="315" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 		<% end_if %>
